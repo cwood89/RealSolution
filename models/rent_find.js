@@ -15,8 +15,14 @@ module.exports = function(sequelize, DataTypes) {
     rental:DataTypes.INTEGER,
     psf:DataTypes.INTEGER,
     size_diff:DataTypes.INTEGER,
-    comp_DOM:DataTypes.INTEGER
+    comp_DOM:DataTypes.INTEGER,
+    id: {
+      type:DataTypes.INTEGER,
+      primaryKey:true
+    },
+    createdAt:DataTypes.DATE,
+    updatedAt:DataTypes.DATE
   });
-  Rent_finds.removeAttribute('id')
+ 
   return Rent_finds;
 };
