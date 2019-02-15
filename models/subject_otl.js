@@ -1,24 +1,19 @@
+const otl = require("../function/subject_otl.js");
+
 module.exports = function(sequelize, DataTypes) {
-  var subject_otlist = sequelize.define("subject_otlist", {
-    subject: DataTypes.STRING,
-    otl:DataTypes.INTEGER,
-    id: {
-        type:DataTypes.INTEGER,
-        primaryKey:true
-      },
+  var subject_otlists = sequelize.define("subject_otlists", {
+    subject:{
+      type:DataTypes.STRING,
+      primaryKey:true,
+    },
+    otl:DataTypes.DECIMAL,
       createdAt:DataTypes.DATE,
       updatedAt:DataTypes.DATE
   });
-
-  subject_otlist.associate = function(models) {
-    // We're saying that a Post should belong to an Author
-    // A Post can't be created without an Author due to the foreign key constraint
-    subject_otlist.belongsTo(models.subject_finds, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
   
-  return subject_otlist;
+  // subject_otlists.associate = function(models) {
+  //   subject_otlists.belongsTo(models.subject_finds,{foreignKey:'subject',targetKey:'FMLS'})
+  // }
+  
+  return subject_otlists;
 };

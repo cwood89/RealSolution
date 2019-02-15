@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var subject_finds = sequelize.define("subject_finds", {
     FMLS:{
       type:DataTypes.STRING,
+      primaryKey:true
     },
     Address: DataTypes.STRING,
     City:DataTypes.STRING,
@@ -22,19 +23,15 @@ module.exports = function(sequelize, DataTypes) {
     comp_sale:DataTypes.INTEGER,
     id: {
       type:DataTypes.INTEGER,
-      primaryKey:true
+      primaryKey:false
     },
     createdAt:DataTypes.DATE,
     updatedAt:DataTypes.DATE
   });
-
-  subject_finds.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
-    subject_finds.hasOne(models.subject_otlist, {
-      onDelete: "cascade"
-    });
-  };
+  
+  // subject_finds.associate = function(models) {
+  //   subject_finds.hasMany(models.subject_otlists,{foreignKey:'subject',sourceKey:'FMLS'})
+  // }
   
   return subject_finds;
 };
