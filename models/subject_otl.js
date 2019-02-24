@@ -1,4 +1,3 @@
-const otl = require("../function/subject_otl.js");
 
 module.exports = function(sequelize, DataTypes) {
   var subject_otlists = sequelize.define("subject_otlists", {
@@ -7,8 +6,22 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey:true,
     },
     otl:DataTypes.DECIMAL,
-      createdAt:DataTypes.DATE,
-      updatedAt:DataTypes.DATE
+    Address: DataTypes.STRING,
+    City:DataTypes.STRING,
+    Zip:DataTypes.STRING,
+    Sub: DataTypes.STRING,
+    Y:DataTypes.INTEGER,
+    B:DataTypes.INTEGER,
+    B_F:DataTypes.INTEGER,
+    B_H:DataTypes.INTEGER,
+    SQFT:DataTypes.INTEGER,
+    Price: DataTypes.INTEGER,
+    est_rent:DataTypes.INTEGER,
+    comp_rental:DataTypes.INTEGER,
+    est_sale:DataTypes.INTEGER,
+    comp_sale:DataTypes.INTEGER,
+    createdAt:DataTypes.DATE,
+    updatedAt:DataTypes.DATE
   });
   
   // subject_otlists.associate = function(models) {

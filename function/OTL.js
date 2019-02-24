@@ -27,6 +27,6 @@ module.exports = function(LIST_PRICE,NET_YIELD,RENT,MARKET_VALUE,YEAR,REHAB,HOA,
     var OFFER_PRICE2 =((RENT*12-YEARLY_AJUSTMENT)/NET_YIELD) - REHAB - RENT*.25 - 1100;
     var OFFER_PRICE = Math.min(OFFER_PRICE1,OFFER_PRICE2)
     var OTL = OFFER_PRICE/LIST_PRICE
-    return OTL.toPrecision(4);
+    return OTL.toPrecision(4)*100;
 }
     
