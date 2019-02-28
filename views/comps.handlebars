@@ -1,0 +1,52 @@
+<div>
+  <div class="jumbotron text-center">
+    <h1>For your interest, here are the comps</h1>
+  </div>
+  <div class="homeBlock mt-15 container">
+     {{#each rentalComps}}
+      <div class="row mt-10 ml-30 mr-30 border border-primary" data-id={{subject}}>
+          <div class="col-6">
+            <p style="padding-top:2ex">FMLS: {{comp_fmls}}</p>
+            <p>Address: {{comp_address}}</p>
+          </div>
+          <div class="col-6">
+            <p style="padding-top:2ex">SQFT: {{comp_size}}</p>
+            <p>Bedrooms: {{comp_B}}</p>
+            <p>Price/SQFT: {{psf}} </p>
+            <p>Build: {{comp_year}}</p>
+            <p>List Price: ${{rental}}</p>
+          </div>
+      </div>
+     {{/each}}
+      {{#each saleComps}}
+      <div class="row mt-10 ml-30 mr-30 border border-primary" data-id={{subject}}>
+          <div class="col-6">
+            <p style="padding-top:2ex">FMLS: {{comp_fmls}}</p>
+            <p>Address: {{comp_address}}</p>
+          </div>
+          <div class="col-6">
+            <p style="padding-top:2ex">SQFT: {{comp_size}}</p>
+            <p>Bedrooms: {{comp_B}}</p>
+            <p>Price/SQFT: {{psf}} </p>
+            <p>Build: {{comp_year}}</p>
+            <p>List Price: ${{market_value}}</p>
+          </div>
+      </div>
+     {{/each}}
+  </div>
+  <!-- Footer -->
+  <footer class="page-footer font-small blue">
+   <div class="footer-copyright text-center py-3">© 2018 Copyright:
+     <a href="https://github.com/Heicyberg"> Heicyberg</a>
+   </div>
+  </footer>
+<!-- Footer -->
+</div>
+  
+
+
+
+
+
+
+

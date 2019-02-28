@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Rent_finds = sequelize.define("rent_finds", {
+  var Sale_finds = sequelize.define("sale_finds", {
     subject: DataTypes.STRING,
     subject_sub: DataTypes.STRING,
     bedrooms: DataTypes.INTEGER,
@@ -9,17 +9,16 @@ module.exports = function(sequelize, DataTypes) {
       type:DataTypes.STRING,
       primarykey:true
     },
-    comp_address: DataTypes.STRING,
+    comp_address:DataTypes.STRING,
     comp_B:DataTypes.INTEGER,
     comp_size:DataTypes.INTEGER,
     comp_year:DataTypes.INTEGER,
-    rental:DataTypes.INTEGER,
+    market_value:DataTypes.INTEGER,
     psf:DataTypes.INTEGER,
     size_diff:DataTypes.INTEGER,
     comp_DOM:DataTypes.INTEGER,
     createdAt:DataTypes.DATE,
     updatedAt:DataTypes.DATE
   });
- 
-  return Rent_finds;
+  return Sale_finds;
 };

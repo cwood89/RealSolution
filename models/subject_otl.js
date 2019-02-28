@@ -1,7 +1,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   var subject_otlists = sequelize.define("subject_otlists", {
-    subject:{
+   subject:{
       type:DataTypes.STRING,
       primaryKey:true,
     },

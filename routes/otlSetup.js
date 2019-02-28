@@ -46,6 +46,10 @@ const otlTable = (req,res,next) => {
 
 module.exports = function(app) {
     app.get("/api/subject_otlists",otlDrop,otlTable,function(req, res) {
-        res.end()
-    })
+            db.subject_otlists.findAll({
+                   order:[['otl','DESC']]
+                  }).then(function(data){
+                        res.render("index",{info:data})
+                        })
+            })
 }
