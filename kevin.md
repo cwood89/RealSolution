@@ -11,6 +11,11 @@ goodness of the yield depends on the season and margin of error. lowest is 88 pe
 length of time listed is DOM--days on market.
 
 
+
+
+
+
+
 Free users will use what we have now. Institions can bring their own data.
 
 We have two types of clients, individuals and corporations. Individuals need the expertise and guidance of a good algorithm to find exactly the right property. They get access to what we can see on the site. Ad supported.

@@ -1,15 +1,13 @@
 <div>
-  <div class="jumbotron text-center">
-    <h1>Real Solution, bring you the finds</h1>
-  </div>
+
   <div class="homeBlock mt-15 container">
      {{#each info}}
-      <div class="homeSection row mt-10 ml-30 mr-30 border border-primary" data-id={{subject}}>
+      {{!-- <div class="homeSection row mt-10 ml-30 mr-30 border border-primary" data-id={{subject}}>
           <div class="col-4">
             <p style="padding-top:2ex">FMLS: {{subject}}</p>
             <p>Address: {{Address}}</p>
             <p>Sub: {{Sub}}</p>
-            <p>City:{{City}}</p>
+            <p>City: {{City}}</p>
             <p>Zip: {{Zip}}</p>
           </div>
           <div class="col-4">
@@ -26,7 +24,78 @@
             <p>Comps indicator: ${{comp_rental}} / ${{comp_sale}}</p>
             <button class="btn btn-info" data-id={{subject}}>Find Comps</button>
           </div> 
-      </div>
+      </div> --}}
+
+            <div class="homeSection row mt-10 ml-30 mr-30" style="border-radius: 12px; padding: 4px; border: 1px solid #211E47; margin-bottom: .6em" data-id={{subject}}>
+            <div>
+
+            <strong class="col-6">
+              <p>{{Address}}, {{City}}, GA {{Zip}}</p>
+              <p class="otlPercent" data-hotness="{{otl}}">Est offer: {{otl}}%</p>
+            </strong>
+
+
+<div class="">
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              More Information
+            </button>
+            <button class="btn btn-info" data-id={{subject}}>Find Comps</button>
+            <button class="btn btn-danger" href="#"><i class="fas fa-heart"></i> Save</button>
+</div>
+            
+
+   </div>
+                                </div>
+
+
+
+
+
+            {{!--  --}}
+              <!-- Button trigger modal -->
+
+<!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{Address}}, {{City}}, GA {{Zip}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        
+
+                                            </div>
+                                              <div class="col-4">
+                                                <p>{{Sub}} Subdivision</p>
+                                                <p style="">FMLS: {{subject}}</p>
+                                                <p>SQFT: {{SQFT}}</p>
+                                                <p>Bedrooms: {{B}}</p>
+                                                <p>Bathrooms: {{B_F}}/{{B_H}}</p>
+                                                <p>Year Built: {{Y}}</p>
+                                                <p>List Price: ${{Price}}</p>
+                                              </div>
+                                              <div class="col-4">
+                                                <p>Est Rental: ${{est_rent}}</p>
+                                                <p>Est Sale: ${{est_sale}}</p>
+                                                <p>Comps indicator: ${{comp_rental}} / ${{comp_sale}}</p>
+                                              </div> 
+                                          </div>
+
+
+                                      </div>
+                                      <div class="modal-footer bg-light">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-info" data-id={{subject}}>Find Comps</button>
+                                      </div>
+                                    </div>
+                               
+            {{!--  --}}
+
+
      {{/each}}
   </div>
   <!-- Footer -->
