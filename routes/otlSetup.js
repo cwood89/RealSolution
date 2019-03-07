@@ -22,7 +22,7 @@ const otlTable = (req,res,next) => {
 
         db.subject_otlists.create({
           subject:data[i].FMLS,
-          otl:otl(data[i].Price,0.048,rent,marketValue,data[i].Y,rehab,data[i].Hoa,data[i].F,),
+          otl:otl(data[i].Price,0.048/*This is the yield we are using right now.*/,rent,marketValue,data[i].Y,rehab,data[i].Hoa,data[i].F,),
           Address:data[i].Address,
           City:data[i].City,
           Zip:data[i].Zip,
