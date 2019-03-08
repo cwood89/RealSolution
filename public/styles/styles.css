@@ -6,6 +6,9 @@
   color: #211E47;
 }
 
+body {
+  background-image: url('../../public/assets/crossline-dots.png')
+}
 
 /* Primary: #211E47
    Secondary: #3A707C

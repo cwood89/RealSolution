@@ -23,6 +23,14 @@ module.exports = function(app) {
     res.render("comps",{rentalComps:rentalComps,saleComps:saleComps});
   });
 
+  app.get('/', function(req, res) {
+    res.render('landing', {})
+  })
+
+  app.get('/about', function(req, res) {
+    res.render('about', {})
+  })
+
 };
 
   // Load example page and pass in an example by id
