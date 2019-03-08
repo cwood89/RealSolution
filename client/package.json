@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "description": "Investment property app",
   "private": true,
-  "proxy": {
-    "target": "https://localhost:3001/",
-    "secure": false
-  },
   "dependencies": {
     "bulma": "^0.7.4",
     "react": "^16.6.3",

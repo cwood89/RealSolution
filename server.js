@@ -5,7 +5,7 @@ const app = express();
 
 const db = require("./models");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -46,3 +46,12 @@ db.sequelize.sync(syncOptions).then(function () {
 });
 
 module.exports = app;
+
+
+
+
+
+// "proxy": {
+//   "target": "https://localhost:3001/",
+//   "secure": false
+// },
