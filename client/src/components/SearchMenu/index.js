@@ -22,7 +22,6 @@ class SearchMenu extends Component {
     <li><a>Comps</a></li>
     <li><a>Thing 2</a></li>
   </ul>
-
 </aside>
 
 

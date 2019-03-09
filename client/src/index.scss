@@ -44,3 +44,15 @@ p {
 .searchAndContent {
   display: flex;
 }
+
+.showButtons {
+  display: none;
+}
+.thisRow:hover > .showButtons {
+  display: block;
+}
+
+.ddButtons {
+  display: flex;
+  justify-content: space-between;
+}
