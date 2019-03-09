@@ -47,8 +47,20 @@ class About extends Component {
         <section className="aboutCards">
           <div className="card">
             <img src="http://placehold.it/300x300"></img>
-            <p>First Last</p>
-            <p>This is sample text to show how this will look when filled out
+            <p>Kevin Conway</p>
+            <p>Fullstack Web Developer
+            </p>
+          </div>
+          <div className="card">
+            <img src="http://placehold.it/300x300"></img>
+            <p>Bingxi Du</p>
+            <p>Fullstack Web Developer
+            </p>
+          </div>
+          <div className="card">
+            <img src="http://placehold.it/300x300"></img>
+            <p>Chris Wood</p>
+            <p>Fullstack Web Developer
             </p>
           </div>
           

@@ -4,6 +4,7 @@ import Header from "../components/header";
 import Table from "../components/ResultTable";
 import Row from "../components/TableRow";
 import API from "../utils/API"
+import SearchMenu from "../components/SearchMenu"
 
 class OTLresults extends Component {
   constructor() {
@@ -30,6 +31,8 @@ class OTLresults extends Component {
     return (
       <div>
         <Header />
+        <div className="searchAndContent">
+        <SearchMenu />
         <Table>
           {this.state.data.map((data) => {
             return (
@@ -40,6 +43,7 @@ class OTLresults extends Component {
           }
           )}
         </Table>
+        </div>
       </div>
     )
   }
