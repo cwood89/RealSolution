@@ -27,3 +27,12 @@ body {
 .dropdown-content {
   color: $Primary;
 }
+
+.aboutCards {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hero {
+  text-align: center;
+}

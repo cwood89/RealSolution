@@ -17,7 +17,21 @@ function Row(props) {
       <td>{props.data.otl}%</td>
       <td>${props.data.est_rent}</td>
       <td>${props.data.est_sale}</td>
-      <td>${props.data.comp_rental} / ${props.data.comp_sale}    <a className="button is-small is-rounded is-danger"
+      <td>${props.data.comp_rental} / ${props.data.comp_sale}</td>
+      <td>
+        <a className="button is-small is-rounded is-danger"
+        href={url}>
+        <i class="fas fa-heart"></i>
+        Save
+        </a>
+
+        <a className="button is-small is-rounded is-dark"
+        href={url}>
+        <i class="fas fa-info-circle"></i>
+        More Info
+        </a>
+
+        <a className="button is-small is-rounded is-primary"
         data-id={props.data.subject}
         href={url}>
         Find Comps</a>

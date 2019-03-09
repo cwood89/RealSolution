@@ -21,17 +21,18 @@ function Nav() {
 
   <div className="dropdown-menu" id="dropdown-menu" role="menu">
     <span className="dropdown-content has-text-primary is-light">
-      <a href="#" className="dropdown-item has-text-primary">
+      <a href="/" className="dropdown-item has-text-primary">
         Properties
       </a>
-      <a className="dropdown-item">
+      <a href="/profile" className="dropdown-item">
         Profile
       </a>
-      <a href="#" className="dropdown-item">
+      <a href="/about" className="dropdown-item">
         About
       </a>
-      <a href="#" className="dropdown-item">
+      <a href="/settings" className="dropdown-item">
         Settings
+        {/* When this button is clicked, it should go to the Profile page and the settings pane should open automatically */}
       </a>
     </span>
   </div>
