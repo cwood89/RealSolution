@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-  app.get("/api/signup", (req, res) => {
+  app.post("/api/signup", (req, res) => {
     // grabbing sent data from sign-up form========
     const { body } = req;
     const {
@@ -10,57 +10,98 @@ module.exports = function (app) {
       lastName,
       password
     } = body;
-    let email = req.body.email;
-    email = email.toLowerCase();
+    let userEmail = req.body.email;
+    userEmail = userEmail.toLowerCase();
     // verifying if data is present=======
     if (!firstName) {
-      res.send({
+      return res.send({
         success: false,
         message: "First name is required."
       })
     }
     if (!lastName) {
-      res.send({
+      return res.send({
         success: false,
         message: "Last name is required."
       })
     }
     if (!password) {
-      res.send({
+      return res.send({
         success: false,
         message: "Password is required."
       })
     }
-    if (!email) {
-      res.send({
+    if (!userEmail) {
+      return res.send({
         success: false,
         message: "Email is required."
       })
     }
-    db.user.findAll({ email: email }).then((err, dbUsers) => {
-      if (err) {
-        res.send({
-          success: false,
-          message: "Server Error: Database"
-        })
-      } else if (dbUsers.length > 1) {
-        res.send({
+    db.user.findAll({ where: { email: userEmail } }).then((results) => {
+      console.log(results)
+      if (results.length > 1) {
+        return res.send({
           success: false,
           message: "Account already exists."
         })
+      } else {
+        db.user.create({
+          firstName: firstName,
+          lastName: lastName,
+          email: userEmail,
+          password: password
+        })
+        console.log(db.user)
+        return res.send({
+          success: true,
+          message: "Signed Up!"
+        })
       }
+    }).catch((err) => {
+      console.log(err);
+      return res.send({
+        success: false,
+        message: "Server Error"
+      })
     })
+  })
 
-    db.user.create({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password
+  app.post("/api/login", (req, res) => {
+    const { body } = req;
+    const { password } = body;
+    let userEmail = req.body.email;
+    userEmail = userEmail.toLowerCase();
+
+    if (!userEmail) {
+      return res.send({
+        success: false,
+        message: "Email is required."
+      })
+    }
+    if (!password) {
+      return res.send({
+        success: false,
+        message: "Password is required."
+      })
+    }
+    db.user.findAll({ where: { email: userEmail } }).then((results) => {
+      if (results.length != 1) {
+        return res.send({
+          success: false,
+          message: "System Failure!"
+        })
+      }
+
+    }).catch((err) => {
+      console.log(err);
+      return res.send({
+        success: false,
+        message: "Server Error"
+      })
     })
 
   })
-
-  // app.post("/api/signup", (req, res) => {
+  // app.get("/api/signup", (req, res) => {
   //   // save data user data to database
   //   // verify data check against existing data
   // })
@@ -71,9 +112,6 @@ module.exports = function (app) {
   //   // redirect
   // })
 
-  // app.post("/api/login", (req, res) => {
-  //   // assign token
-  // })
 
   // app.post("/api/verify", (req, res) => {
   //   // get token 
