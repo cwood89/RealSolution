@@ -4,7 +4,7 @@ function Row(props) {
   let url = "/comps/" + props.data.subject
   return (
     <tr>
-      <td>{props.data.Address} {props.data.Sub}, {props.data.Zip}</td>
+      <td>{props.data.Address} {props.data.Sub} <br></br> {props.data.City}, {props.data.Zip}</td>
       <td>{props.data.SQFT}</td>
       <td>{props.data.B}</td>
       <td>{props.data.B_F}/{props.data.B_H}</td>
