@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 // Routes
+require("./routes/authRoutes")(app);
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);
 require("./routes/compApi")(app);

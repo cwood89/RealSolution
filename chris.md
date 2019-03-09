@@ -24,11 +24,11 @@ set up express session
       save data user data to database
       verify data check against existing data
     }
-    signin ( get ) {
+    login ( get ) {
       check for token
       redirect
     }
-    signin ( post ) {
+    login ( post ) {
 
     }
     verify ( post ) {
