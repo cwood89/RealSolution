@@ -38,7 +38,7 @@ module.exports = function (app) {
       })
     }
     db.user.findAll({ where: { email: userEmail } }).then((results) => {
-      console.log(results)
+      console.log(results);
       if (results.length > 1) {
         return res.send({
           success: false,
@@ -84,11 +84,24 @@ module.exports = function (app) {
         message: "Password is required."
       })
     }
-    db.user.findAll({ where: { email: userEmail } }).then((results) => {
+    db.user.findAll({ where: { email: userEmail } }).then(async (results) => {
       if (results.length != 1) {
         return res.send({
           success: false,
           message: "System Failure!"
+        })
+      }
+      console.log(results[0].password)
+      console.log(password)
+      if (! await db.user.validPassword(password, results[0].password)) {
+        return res.send({
+          success: false,
+          message: "Invalid Password"
+        })
+      } else {
+        res.send({
+          success: true,
+          message: "Match"
         })
       }
 
