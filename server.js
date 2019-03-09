@@ -19,8 +19,7 @@ if (process.env.NODE_ENV === "production") {
 // Routes
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);
-//require("./routes/subject-rental-api-routes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routes/compApi")(app);
 
 var syncOptions = { force: false };
 
@@ -47,11 +46,3 @@ db.sequelize.sync(syncOptions).then(function () {
 
 module.exports = app;
 
-
-
-
-
-// "proxy": {
-//   "target": "https://localhost:3001/",
-//   "secure": false
-// },

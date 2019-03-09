@@ -7,7 +7,7 @@ export default {
   },
 
   findComps(id) {
-    return axios.get("/subjectFinds/comps/" + id);
+    return axios.get("/api/comps/" + id);
   }
 
 };
