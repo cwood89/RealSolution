@@ -30,7 +30,14 @@ class Profile extends Component {
     return (
       <div>
         <Header />
- Profile Page
+
+        <div className="tabs">
+          <ul>
+            <li className="is-active"><a>Saved Properties</a></li>
+            <li><a>User Settings</a></li>
+            <li><a>Prop Settings</a></li>
+          </ul>
+        </div>
       </div>
     )
   }

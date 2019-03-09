@@ -36,3 +36,11 @@ body {
 .hero {
   text-align: center;
 }
+
+p {
+  font-family: $AltFont;
+}
+
+.searchAndContent {
+  display: flex;
+}
