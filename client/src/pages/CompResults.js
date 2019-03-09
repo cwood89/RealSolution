@@ -19,9 +19,9 @@ class CompResults extends Component {
 
   getResults() {
     API.findComps(this.props.match.params.id).then((data) => {
-      console.log(data)
+      console.log(data.data)
       this.setState({
-        data: data
+        data: data.data
       })
     })
   }
