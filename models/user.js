@@ -6,16 +6,25 @@ module.exports = function (sequelize, DataTypes) {
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING
-  }, {
-      instanceMethods: {
-        generateHash(password) {
-          return bcrypt.hash(password, bcrypt.genSaltSync(8));
-        },
-        validPassword(password) {
-          return bcrypt.compare(password, this.password);
-        }
-      }
-    }
+  },
   );
+
+  function getHash(user) {
+    return new Promise((resolve, reject) => {
+      bcrypt.genSalt(saltRounds, (err, salt) => {
+        bcrypt.hash(user.get('password'), salt, (err, hash) => {
+          if (err)
+            resolve(hash);
+        });
+      });
+    });
+  }
+
+  User.addHook('beforeCreate', (user, options) => {
+    console.log('hook fired');
+    console.log(user);
+    return getHash(user)
+      .then(hash => user.set('password', hash))
+  });
   return User;
 };
