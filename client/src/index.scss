@@ -1,4 +1,10 @@
 @import "bulma";
+$Primary: #211E47;
+$Secondary: rgb(78, 150, 167);
+$Tertiary: #FFB856; 
+
+$MainFont: 'Suranna', serif;
+$AltFont: 'Raleway', sans-serif;
 
 
 body {
@@ -7,3 +13,17 @@ body {
   font-family: sans-serif;
 }
 
+.navbar {
+  border-bottom: 3px solid $Tertiary;
+  background-color: $Secondary;
+}
+
+.mainBrand {
+  color: $Secondary;
+  font-family: $MainFont;
+  font-size: 40px;
+}
+
+.dropdown-content {
+  color: $Primary;
+}

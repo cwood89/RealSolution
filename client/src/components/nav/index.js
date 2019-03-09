@@ -5,29 +5,41 @@ function Nav() {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
-          <span className="icon" >
-            <i className="fas fa-home fa-2x"></i>
-          </span>
-        </a>
-
-        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBooks">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+          <div className="mainBrand">Real Solution</div>
         </a>
       </div>
+      {/* dropdown */}
+      <div className="navbar-item dropdown is-hoverable">
+      <div className="dropdown-trigger">
+    <button className="button has-background-dark has-text-light" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span><i class="fas fa-bars"></i>
 
+</span>
+
+    </button>
+  </div>
+
+  <div className="dropdown-menu" id="dropdown-menu" role="menu">
+    <span className="dropdown-content has-text-primary is-light">
+      <a href="#" className="dropdown-item has-text-primary">
+        Properties
+      </a>
+      <a className="dropdown-item">
+        Profile
+      </a>
+      <a href="#" className="dropdown-item">
+        About
+      </a>
+      <a href="#" className="dropdown-item">
+        Settings
+      </a>
+    </span>
+  </div>
+
+
+      </div>
+      {/* end of dropdown */}
       <div id="navbarBooks" className="navbar-menu">
-        <div className="navbar-start">
-          <a className="navbar-item" href="/">
-            page 1
-          </a>
-
-          <a className="navbar-item" href="/">
-            page 2
-          </a>
-        </div>
-
         <div className="navbar-end">
           <a href="/" className="navbar-item">
             <span className="icon">

@@ -7,16 +7,6 @@ function Header(props) {
       <div className="hero-head">
         <Nav />
       </div>
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title">
-            RealSolution
-        </h1>
-          <h2 className="subtitle">
-            Invest wisely.
-        </h2>
-        </div>
-      </div>
     </section>
   )
 }
