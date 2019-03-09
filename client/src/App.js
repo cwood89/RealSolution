@@ -10,6 +10,7 @@ function App() {
           <Route exact path="/" component={OTLresults} />
           <Route exact path="/otl" component={OTLresults} />
           <Route exact path="/comps/:id" component={CompResults} />
+          <Route exact path="/about" />
         </Switch>
       </div>
     </Router>
