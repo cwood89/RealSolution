@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-
 function getHash(user) {
   return new Promise((resolve, reject) => {
     bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -12,7 +11,6 @@ function getHash(user) {
     });
   });
 }
-
 
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("user", {
@@ -27,10 +25,17 @@ module.exports = function (sequelize, DataTypes) {
     password: DataTypes.STRING
   }
   );
-
+  // hashes password before saving to db
   User.addHook('beforeCreate', (user, options) => {
     return getHash(user)
       .then(hash => user.set('password', hash))
   });
+  // compares hashes 
+  User.validPassword = async function (password, hash) {
+    return await bcrypt.compare(password, hash).then(function (res) {
+      console.log(res)
+      return res;
+    });
+  }
   return User;
 };
