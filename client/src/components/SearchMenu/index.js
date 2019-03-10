@@ -19,8 +19,11 @@ class SearchMenu extends Component {
     Filter Properties
   </p>
   <ul className="menu-list">
-    <li><a>Comps</a></li>
-    <li><a>Thing 2</a></li>
+    <li><a>Estimated Offer</a></li>
+    <li><a>Price</a></li>
+    <li><a>Square Footage</a></li>
+    <li><a>Town</a></li>
+    <li><a>Neighborhood</a></li>
   </ul>
 </aside>
 

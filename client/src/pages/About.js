@@ -45,19 +45,19 @@ class About extends Component {
 {/* Cards for Devs */}
 
         <section className="aboutCards">
-          <div className="card">
+          <div className="card animated fadeInUp ">
             <img src="http://placehold.it/300x300"></img>
             <p>Kevin Conway</p>
             <p>Fullstack Web Developer
             </p>
           </div>
-          <div className="card">
+          <div className="card animated fadeInUp">
             <img src="http://placehold.it/300x300"></img>
             <p>Bingxi Du</p>
             <p>Fullstack Web Developer
             </p>
           </div>
-          <div className="card">
+          <div className="card animated fadeInUp">
             <img src="http://placehold.it/300x300"></img>
             <p>Chris Wood</p>
             <p>Fullstack Web Developer
