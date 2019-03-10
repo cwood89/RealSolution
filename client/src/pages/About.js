@@ -30,7 +30,7 @@ class About extends Component {
     return (
       <span>
         <Header />
-        <section className="hero is-primary">
+        <section className="hero">
           {/* Main Heading */}
           <div className="hero-body">
             <div className="container">
@@ -66,6 +66,11 @@ class About extends Component {
           
 
         </section>
+
+
+        <div>
+          
+        </div>
 
       </span>
     )
