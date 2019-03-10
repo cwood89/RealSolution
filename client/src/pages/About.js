@@ -30,7 +30,7 @@ class About extends Component {
     return (
       <span>
         <Header />
-        <section className="hero">
+        <section className="hero is-primary">
           {/* Main Heading */}
           <div className="hero-body">
             <div className="container">

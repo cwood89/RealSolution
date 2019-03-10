@@ -13,16 +13,22 @@ function Row(props) {
       <td>{props.data.otl}%</td>
       <td className="dropdown-trigger">${props.data.comp_rental} / ${props.data.comp_sale}</td> 
       <td className="showButtons animated fadeInRightBig faster">
-        <div className="dropdown is-hoverable">
+      {" "}
+      <br></br>
+      {" "}
+        <div className="dropdown is-active is-hoverable">
           <div className="dropdown-menu ddButtons" id="dropdown-menu4" role="menu">
             <div className="dropdown-content">
               <div className="dropdown-item">
                 <button className="button is-primary">Comps</button>
-                <br></br>
-                <button className="button is-dark">More Info</button>
-                <br></br>
-                <button className="button is-danger">Save</button>
               </div>
+              <div className="dropdown-item">
+                <button className="button is-primary">Info</button>
+              </div>
+              <div className="dropdown-item">
+                <button className="button is-primary">Save</button>
+              </div>
+         
             </div>
           </div>
         </div>

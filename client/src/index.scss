@@ -1,4 +1,6 @@
-@import "bulma";
+
+
+
 $Primary: #211E47;
 $Secondary: rgb(78, 150, 167);
 $Tertiary: #FFB856; 
@@ -48,11 +50,13 @@ p {
 .showButtons {
   display: none;
 }
+
 .thisRow:hover > .showButtons {
   display: block;
 }
 
 .ddButtons {
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
+  position: relative;
+  top: 50px;
 }
