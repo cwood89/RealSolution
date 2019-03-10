@@ -91,20 +91,22 @@ module.exports = function (app) {
           message: "System Failure!"
         })
       }
-      console.log(results[0].password)
-      console.log(password)
       if (! await db.user.validPassword(password, results[0].password)) {
         return res.send({
           success: false,
           message: "Invalid Password"
         })
       } else {
-        res.send({
-          success: true,
-          message: "Match"
+        let user = results[0].dataValues;
+        db.userSession.create({ userId: user.id }).then((results) => {
+          console.log(results);
+          res.send({
+            success: true,
+            message: "Signed in",
+            token: user.id
+          })
         })
       }
-
     }).catch((err) => {
       console.log(err);
       return res.send({

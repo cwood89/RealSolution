@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const uuidV4 = require("uuid/v4")
 const saltRounds = 10;
 
 function getHash(user) {
@@ -15,13 +16,15 @@ function getHash(user) {
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("user", {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+      type: DataTypes.UUID,
+      defaultValue: uuidV4()
     },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      primaryKey: true
+    },
     password: DataTypes.STRING
   }
   );
@@ -33,7 +36,6 @@ module.exports = function (sequelize, DataTypes) {
   // compares hashes 
   User.validPassword = async function (password, hash) {
     return await bcrypt.compare(password, hash).then(function (res) {
-      console.log(res)
       return res;
     });
   }
