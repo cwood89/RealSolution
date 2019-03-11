@@ -19,7 +19,7 @@ order by County, City, Sub, sqft;
 DROP TABLE if EXISTS atl_db.rent_finds;
 CREATE TABLE atl_db.rent_finds
 SELECT newlisting.fmls AS subject, newlisting.sub as subject_sub, newlisting.B as bedrooms, newlisting.SQFT as size, newlisting.Y as year_build, 
-	   rental.fmls as comp_fmls, rental.B as comp_B, rental.sqft as comp_size,rental.Year as comp_year ,rental.price as rental, 
+	   rental.fmls as comp_fmls, rental.Address as comp_address, rental.B as comp_B, rental.sqft as comp_size,rental.Year as comp_year ,rental.price as rental, 
        round(rental.price/rental.sqft,2) as psf, rental.sqft - newlisting.sqft as size_diff, rental.Dom as comp_DOM
 FROM atl_db.newlisting
 join atl_db.rental on ( upper(rental.sub) LIKE CONCAT('%', upper(newlisting.sub), '%') or upper(newlisting.sub) LIKE CONCAT('%', upper(rental.sub), '%') )and newlisting.zip = rental.zip
@@ -47,7 +47,7 @@ WHERE est_rent IN ( SELECT max(est_rent) FROM min_size GROUP BY subject);
 DROP TABLE if EXISTS atl_db.sale_finds;
 CREATE TABLE atl_db.sale_finds
 SELECT newlisting.fmls AS subject, newlisting.sub as subject_sub, newlisting.B as bedrooms, newlisting.SQFT as size, newlisting.Y as year_build, 
-	   sale.fmls as comp_fmls, sale.B as comp_B, sale.sqft as comp_size,sale.Year as comp_year ,sale.price as market_value, 
+	   sale.fmls as comp_fmls, sale.Address as comp_address, sale.B as comp_B, sale.sqft as comp_size,sale.Year as comp_year ,sale.price as market_value, 
        round(sale.price/sale.sqft,2) as psf, sale.sqft - newlisting.sqft as size_diff, sale.DOM as comp_DOM
 FROM atl_db.newlisting
 join atl_db.sale on ( upper(sale.sub) LIKE CONCAT('%', upper(newlisting.sub), '%') or upper(newlisting.sub) LIKE CONCAT('%', upper(sale.sub), '%') )and newlisting.zip = sale.zip

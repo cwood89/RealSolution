@@ -2,15 +2,15 @@
 module.exports = function(LIST_PRICE,NET_YIELD,RENT,MARKET_VALUE,YEAR,REHAB,HOA,F,TAX) {
     
     if(YEAR<2016){
-        TURN_COST = 125
+        TURN_COST = 125*2
     }else{
-        TURN_COST = 105
+        TURN_COST = 105*2
     }
 
     if(F =='' && HOA == 0){
         HOA = 0
     }else if(F.charAt(0) == 'M'){
-        HOA = HOA*4
+        HOA = HOA*12
     }else if(F.charAt(0) == 'A' && HOA!== 0){
         HOA = HOA
     }
@@ -19,7 +19,7 @@ module.exports = function(LIST_PRICE,NET_YIELD,RENT,MARKET_VALUE,YEAR,REHAB,HOA,
         TAX = 0.01 * LIST_PRICE + 200
     }
     
-    var OFFER_PRICE1 = MARKET_VALUE - 50 - REHAB - RENT*.25 - 1100;
+    var OFFER_PRICE1 = MARKET_VALUE - 50 - REHAB - RENT*.25 - 1700;
     var MANAGEMENT_FEE = (RENT*12)*(1-0.0726)*0.0625+0.75*RENT/3+0.5*RENT/3;
     var INSURANCE = 338.2;
     var SQFT_ADJUSTMENT = RENT*.0726*12;

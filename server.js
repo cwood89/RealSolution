@@ -24,7 +24,7 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);
-//require("./routes/subject-rental-api-routes")(app);
+require("./routes/newListingTable-api-routes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };

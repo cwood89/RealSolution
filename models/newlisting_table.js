@@ -1,11 +1,8 @@
-
 module.exports = function(sequelize, DataTypes) {
-  var subject_otlists = sequelize.define("subject_otlists", {
-   subject:{
+  var newListings = sequelize.define("newListings", {
+    FMLS:{
       type:DataTypes.STRING,
-      primaryKey:true,
     },
-    otl:DataTypes.DECIMAL,
     Address: DataTypes.STRING,
     City:DataTypes.STRING,
     Zip:DataTypes.STRING,
@@ -16,12 +13,17 @@ module.exports = function(sequelize, DataTypes) {
     B_H:DataTypes.INTEGER,
     SQFT:DataTypes.INTEGER,
     Price: DataTypes.INTEGER,
-    est_rent:DataTypes.INTEGER,
-    comp_rental:DataTypes.INTEGER,
-    est_sale:DataTypes.INTEGER,
-    comp_sale:DataTypes.INTEGER,
+    Hoa:DataTypes.INTEGER,
+    F:DataTypes.STRING,
+    DOM:DataTypes.INTEGER,
+    Taxes:DataTypes.INTEGER,
+    id: {
+      type:DataTypes.INTEGER,
+      primaryKey:true
+    },
     createdAt:DataTypes.DATE,
     updatedAt:DataTypes.DATE
   });
-  return subject_otlists;
+  
+  return newListings;
 };
