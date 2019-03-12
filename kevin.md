@@ -26,3 +26,14 @@ Use Sass for the styling. just vanilla css with flexbox/grid
 
 I will do Express Sessions
 
+
+
+
+
+
+
+
+
+One table for user settings
+
+* 

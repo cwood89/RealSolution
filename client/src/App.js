@@ -4,13 +4,14 @@ import OTLresults from "./pages/OTLresults";
 import CompResults from "./pages/CompResults";
 import About from "./pages/About";
 import Profile from "./pages/Profile"
+import Landing from "./pages/landingPage"
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={OTLresults} />
+          <Route exact path="/" component={Landing} />
           <Route exact path="/otl" component={OTLresults} />
           <Route exact path="/comps/:id" component={CompResults} />
           <Route exact path="/about" component={About} />

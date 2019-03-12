@@ -15,9 +15,7 @@ class SearchMenu extends Component {
 
 
 <aside className="menu">
-  <p className="menu-label">
-    Filter Properties
-  </p>
+
   <ul className="menu-list">
     <li><a>Estimated Offer</a></li>
       <div class="slidecontainer">
