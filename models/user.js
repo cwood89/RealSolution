@@ -24,9 +24,12 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       primaryKey: true
     },
-    password: DataTypes.STRING
-  }
-  );
+    password: DataTypes.STRING,
+    premiumUser: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
+  });
   // hashes password before saving to db
   User.addHook('beforeCreate', (user, options) => {
     return getHash(user)
