@@ -38,3 +38,7 @@ set up express session
     signout ( post ) {
       kill session
      }
+
+
+     chance i dont need usr session model  
+     
