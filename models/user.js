@@ -1,5 +1,4 @@
 const bcrypt = require("bcrypt");
-const uuidV4 = require("uuid/v4")
 const saltRounds = 10;
 
 function getHash(user) {
@@ -17,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("user", {
     id: {
       type: DataTypes.UUID,
-      defaultValue: uuidV4()
+      defaultValue: DataTypes.UUIDV4
     },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -25,9 +24,12 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       primaryKey: true
     },
-    password: DataTypes.STRING
-  }
-  );
+    password: DataTypes.STRING,
+    premiumUser: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
+  });
   // hashes password before saving to db
   User.addHook('beforeCreate', (user, options) => {
     return getHash(user)

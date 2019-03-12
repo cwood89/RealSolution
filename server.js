@@ -3,21 +3,23 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const logger = require("morgan");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const db = require("./models");
-
 const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(cookieParser());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"))
 };
 
+// importing sessions
+require("./sessions")(app)
 
 // Routes
 require("./routes/authRoutes")(app);
