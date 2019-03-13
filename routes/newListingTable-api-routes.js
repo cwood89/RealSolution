@@ -14,18 +14,33 @@ admin.initializeApp({
 var dbfirebase = admin.database();
 var ref = dbfirebase.ref("newListing");
 
-
 //drop all the records first
 const newListingDrop = (req,res,next) =>{
-    db.newListings.destroy({where:{}});
+    db.customerListings.destroy({where:{}});
     next();
 }
 
 module.exports = function(app) {
-    app.get("/api/newlisting",newListingDrop,function(req, res) {
-        ref.once("value", function(snapshot) {
-            console.log("snapshot "+snapshot.val());
-            res.send(snapshot.val());
+    app.get("/api/customerListing",newListingDrop,function(req, res) {
+        ref.on("child_added", function(snapshot) {
+            var element = snapshot.val()
+            db.customerListings.create({
+                    FMLS:element.FMLS,
+                    Address: element.FMLS,
+                    City:element.City,
+                    Zip:element.Zip,
+                    Sub: element.Sub,
+                    Y:element.Y,
+                    B:element.B,
+                    B_F:element.B_F,
+                    B_H:element.B_H,
+                    SQFT:element.SQFT,
+                    Price: element.Price,
+                    Hoa:element.Hoa,
+                    F:element.F,
+                    DOM:element.DOM,
+                    Taxes:element.Taxes
+            })
         });
     })
 }

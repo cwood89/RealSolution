@@ -1,10 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-  var newListings = sequelize.define("newListings", {
+  var customerListings = sequelize.define("customerListings", {
     FMLS:{
       type:DataTypes.STRING,
+      primaryKey:true
     },
     Address: DataTypes.STRING,
     City:DataTypes.STRING,
+    County:DataTypes.STRING,
     Zip:DataTypes.STRING,
     Sub: DataTypes.STRING,
     Y:DataTypes.INTEGER,
@@ -17,13 +19,8 @@ module.exports = function(sequelize, DataTypes) {
     F:DataTypes.STRING,
     DOM:DataTypes.INTEGER,
     Taxes:DataTypes.INTEGER,
-    id: {
-      type:DataTypes.INTEGER,
-      primaryKey:true
-    },
     createdAt:DataTypes.DATE,
     updatedAt:DataTypes.DATE
   });
-  
-  return newListings;
+  return customerListings;
 };
