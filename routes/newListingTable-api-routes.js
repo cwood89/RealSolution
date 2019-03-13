@@ -24,23 +24,12 @@ module.exports = function(app) {
     app.get("/api/customerListing",newListingDrop,function(req, res) {
         ref.on("child_added", function(snapshot) {
             var element = snapshot.val()
-            db.customerListings.create({
-                    FMLS:element.FMLS,
-                    Address: element.FMLS,
-                    City:element.City,
-                    Zip:element.Zip,
-                    Sub: element.Sub,
-                    Y:element.Y,
-                    B:element.B,
-                    B_F:element.B_F,
-                    B_H:element.B_H,
-                    SQFT:element.SQFT,
-                    Price: element.Price,
-                    Hoa:element.Hoa,
-                    F:element.F,
-                    DOM:element.DOM,
-                    Taxes:element.Taxes
-            })
+            db.customerListings.create({FMLS:element.FMLS,Address: element.FMLS,
+            City:element.City,Zip:element.Zip,Sub: element.Sub,Y:element.Y,
+            B:element.B,B_F:element.B_F,B_H:element.B_H,SQFT:element.SQFT,
+            Price: element.Price,Hoa:element.Hoa,F:element.F,DOM:element.DOM,
+            Taxes:element.Taxes})
+            res.send(element)
         });
     })
 }
