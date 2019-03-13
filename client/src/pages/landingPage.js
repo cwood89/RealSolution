@@ -11,44 +11,44 @@ class Landing extends Component {
 
   render() {
 
-    return(
+    return (
       <div>
 
-      <div>
-        {/* This will be a hero later */}
-      landing page
+        <div>
+          {/* This will be a hero later */}
+          landing page
       </div>
 
-      <section>
-        {/* Flippable div */}
-        <div>
-          {/* regular user signup */}
-          regular signup: first name, last name, email, password
-
-          <form action="/action_page.php">
-            First name:<br></br>
-            <input type="text" name="firstname" value="First Name"/>
-            <br></br>
-            Last name:<br></br>
-            <input type="text" name="lastname" value="Last Name" />
-            <br></br>
-            Email:<br></br>
-            <input type="text" name="email" value="" />
-            <br></br>
-            Password:<br></br>
-            <input type="text" name="password" value="" />
-            <br></br>
-            <input type="submit" value="Submit"/>
-          </form> 
+        <section>
+          {/* Flippable div */}
+          <div>
+            {/* regular user signup */}
+            regular signup: first name, last name, email, password
+  
+          <form action="/api/signup" method="POST">
+              First name:<br></br>
+              <input type="text" name="firstname" value="First Name" />
+              <br></br>
+              Last name:<br></br>
+              <input type="text" name="lastname" value="Last Name" />
+              <br></br>
+              Email:<br></br>
+              <input type="text" name="email" value="" />
+              <br></br>
+              Password:<br></br>
+              <input type="text" name="password" value="" />
+              <br></br>
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+          <div>
+            {/* premium user signup */}
+            premium signup: first name, last name, email, password,
         </div>
-        <div>
-          {/* premium user signup */}
-          premium signup: first name, last name, email, password, 
-        </div>
-      </section>
+        </section>
       </div>
-  );
-}
+    );
+  }
 }
 
 export default Landing

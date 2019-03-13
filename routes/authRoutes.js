@@ -50,12 +50,12 @@ module.exports = function (app) {
       where: {
         email: userEmail
       }
-    }).then((results) => {
+    }).then(async (results) => {
       console.log(results.length);
       // if not
       if (results.length < 1) {
 
-        db.user.create({
+        await db.user.create({
           firstName: firstName,
           lastName: lastName,
           email: userEmail,
@@ -83,6 +83,8 @@ module.exports = function (app) {
       })
     })
   })
+
+
   app.post("/api/login", sessionChecker, async (req, res) => {
     // grabbing data=================
     const { body } = req;
