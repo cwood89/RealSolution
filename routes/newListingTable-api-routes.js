@@ -7,21 +7,21 @@ var serviceAccount = require("../config/serviceAccount.json");
 // Initialize the app with a service account, granting admin privileges
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://atlnewlisting.firebaseio.com"
+  databaseURL: "https://atlcustomerListings.firebaseio.com"
 });
 
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var dbfirebase = admin.database();
-var ref = dbfirebase.ref("newListing");
+var ref = dbfirebase.ref("customerListings");
 
 //drop all the records first
-const newListingDrop = (req,res,next) =>{
+const customerListingsDrop = (req,res,next) =>{
     db.customerListings.destroy({where:{}});
     next();
 }
 
 module.exports = function(app) {
-    app.get("/api/customerListing",newListingDrop,function(req, res) {
+    app.get("/api/customerListing",customerListingsDrop,function(req, res) {
         ref.on("child_added", function(snapshot) {
             var element = snapshot.val()
             db.customerListings.create({

@@ -1,0 +1,20 @@
+var db = require("../models");
+
+const rentalcompDrop = (req,res,next) =>{
+    db.rent_finds.destroy({where:{}});
+    next();
+}
+
+module.exports = function(app) {
+    app.get("/api/rentalComps",rentalcompDrop,function(req, res) {
+    var QUERY = "SELECT customerListings.FMLS AS subject, customerListings.sub as subject_sub, customerListings.B as bedrooms, customerListings.SQFT as size, customerListings.Y as year_build, rentals.fmls as comp_fmls, rentals.Address as comp_address, rentals.B as comp_B, rentals.sqft as comp_size,rentals.Year as comp_year ,rentals.price as rentals, round(rentals.price/rentals.sqft,2) as psf, rentals.sqft - customerListings.sqft as size_diff, rentals.Dom as comp_DOM"+
+                " FROM customerListings"+
+                " join rentals on ( upper(rentals.sub) LIKE CONCAT('%', upper(customerListings.sub), '%') or upper(customerListings.sub) LIKE CONCAT('%', upper(rentals.sub), '%') )and customerListings.zip = rentals.zip"+
+                " where customerListings.sub not in ('n/a','None','na') and ( customerListings.sqft < 1.1*rentals.sqft ) and customerListings.Y >= rentals.YEAR - 10 and rentals.sqft != 0"+
+                " ORDER BY customerListings.fmls, size_diff;"
+            db.sequelize.query(QUERY,{raw:false, type:Sequelize.QueryTypes.SELECT}).then( table=> {
+                // Results will be an empty array and metadata will contain the number of affected rows.
+                console.log(table)
+              }).then(res.send(table))
+    })
+}
