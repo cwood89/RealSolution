@@ -26,3 +26,5 @@ function Landing() {
     </Router>
   );
 }
+
+export default Landing;
