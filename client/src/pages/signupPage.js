@@ -65,27 +65,35 @@ class SignUp extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          First Name:
-          <input type="text" value={this.state.firstName} onChange={this.fNameHandler} />
-        </label>
-        <label>
-          Last Name:
-          <input type="text" value={this.state.lastName} onChange={this.lNameHandler} />
-        </label>
-        <label>
-          Email:
-          <input type="email" value={this.state.email} onChange={this.emailHandler} />
-        </label>
-        {/* Need to build input validation logic */}
-        {/* state is currently the same for all */}
-        <label>
-          Password:
-          <input type="password" value={this.state.password} onChange={this.passwordHandler} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation"><h1 className="mainBrand">Real Solution</h1></nav>
+        <div className="loginMasterContainer">
+          <div className="hero is-light heroLogin">Login page</div>
+          <form onSubmit={this.handleSubmit} className="is-primary">
+            <div className="signupFieldContainer is-half">
+              <label>
+                First Name:
+                    <input className="input is-success" type="text" value={this.state.firstName} onChange={this.fNameHandler} />
+              </label>
+              <label>
+                Last Name:
+                    <input className="input is-success" type="text" value={this.state.lastName} onChange={this.lNameHandler} />
+              </label>
+              <label>
+                Email:
+                    <input className="input is-success" type="email" value={this.state.email} onChange={this.emailHandler} />
+              </label>
+              {/* Need to build input validation logic */}
+              {/* state is currently the same for all */}
+              <label>
+                Password:
+                    <input className="input is-success" type="password" value={this.state.password} onChange={this.passwordHandler} />
+              </label>
+            </div>
+            <input className="button is-primary signupButton" type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
     );
   }
 }
