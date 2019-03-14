@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import API from "../utils/API"
-
+import { Redirect } from "react-router-dom";
 
 
 class SignUp extends Component {
@@ -50,17 +50,18 @@ class SignUp extends Component {
 
     API.signUp(user).then((req, res) => {
       alert('signed up!')
-      console.log(user)
+      console.log(user);
+
+      this.setState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+      })
+      return < Redirect to="/otl" />
     }).catch((err) => {
       console.log(err)
     })
-    this.setState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: ""
-    })
-
   }
 
   render() {
