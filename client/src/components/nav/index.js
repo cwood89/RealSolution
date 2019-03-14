@@ -5,7 +5,7 @@ function Nav() {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation" >
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
+        <a className="navbar-item" href="/otl">
           <div className="mainBrand">Real Solution</div>
         </a>
       </div>
@@ -19,7 +19,7 @@ function Nav() {
 
   <div className="dropdown-menu" id="dropdown-menu" role="menu">
     <span className="dropdown-content">
-      <a href="/"        className="dropdown-item is-active animated zoomInRight">
+      <a href="/otl"        className="dropdown-item is-active animated zoomInRight">
         Properties
       </a>
       <a href="/profile" className="dropdown-item is-active animated zoomInRight">
