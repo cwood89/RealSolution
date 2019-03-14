@@ -6,7 +6,7 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const db = require("./models");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(logger("dev"));

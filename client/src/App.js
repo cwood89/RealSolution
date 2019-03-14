@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Profile from "./pages/Profile"
 import Landing from "./pages/landingPage"
 
+
 function App() {
   return (
     <Router>
