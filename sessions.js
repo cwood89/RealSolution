@@ -3,7 +3,8 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./models");
 
-var mySessionStore = new SequelizeStore({
+let twoHours = 1000 * 60 * 60 * 2;
+let mySessionStore = new SequelizeStore({
   db: db,
   table: "userSession",
 });
@@ -11,11 +12,16 @@ var mySessionStore = new SequelizeStore({
 // configure express session
 module.exports = function (app) {
   app.use(session({
+    name: "sid",
     secret: "realSolution",
     store: mySessionStore,
     saveUninitialized: false,
     resave: false,
-    proxy: true
+    proxy: true,
+    cookie: {
+      maxAge: twoHours,
+      sameSite: true
+    }
   })
   );
 

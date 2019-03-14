@@ -1,16 +1,8 @@
 var db = require("../models");
 
 module.exports = function (app) {
-  // middleware function to check for logged-in users
-  const sessionChecker = (req, res, next) => {
-    if (req.session.user && req.cookies.user_sid) {
-      res.redirect('/otl');
-    } else {
-      next();
-    }
-  };
-
-  app.post("/api/signup", sessionChecker, (req, res) => {
+  app.post("/api/signup", (req, res) => {
+    const { userId } = req.session;
     // grabbing sent data from sign-up form========
     const { body } = req;
     const {
@@ -54,21 +46,23 @@ module.exports = function (app) {
       console.log(results.length);
       // if not
       if (results.length < 1) {
-
         await db.user.create({
           firstName: firstName,
           lastName: lastName,
           email: userEmail,
           password: password
-        }).then(() => {
-          res.redirect("/login")
-          return res.send({
-            success: true,
-            message: "Signed Up!"
-          })
-        }).catch((err) => {
-          console.log(err)
         })
+          .then((user) => {
+            // create session
+            req.session.userId = user.id;
+            return res.send({
+              success: true,
+              message: "Signed Up"
+            })
+          })
+          .catch((err) => {
+            console.log(err)
+          })
       } else {
         return res.send({
           success: false,
@@ -85,7 +79,7 @@ module.exports = function (app) {
   })
 
 
-  app.post("/api/login", sessionChecker, async (req, res) => {
+  app.post("/api/login", async (req, res) => {
     // grabbing data=================
     const { body } = req;
     const { password } = body;
@@ -125,9 +119,13 @@ module.exports = function (app) {
       } else {
         // creating a session
         let user = results[0].dataValues;
-        req.session.user = user;
+        console.log(user.id)
+        req.session.userId = user.id;
         console.log(req.session)
-        res.redirect("/otl");
+        return res.send({
+          success: true,
+          message: "logged In",
+        })
       }
     }).catch((err) => {
       console.log(err);
@@ -140,12 +138,11 @@ module.exports = function (app) {
   })
 
   app.get("/api/logout", (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
-      res.clearCookie('user_sid');
-      res.redirect('/');
-    } else {
-      res.redirect('/login');
-    }
+    res.clearCookie('user_sid');
+    res.send({
+      success: true,
+      message: "Signed out"
+    })
   })
   // app.get("/api/signup", (req, res) => {
   //   // save data user data to database

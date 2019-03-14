@@ -1,44 +1,26 @@
-# to do
+# What should it do
 
-model for user
-{
-name
-id
-email
-password (hash password)
-}
-model for userSession
-{
-userID
-timestamp
-}
+landing page should have two links to log in or sign-up
+after log in or sign up it should send you to the homepage
+if you try and sign up an existing email you should be redirected to login
+homepage will not be assessible to unauthorized users
+if user is logged in the signup and log in pages shoild redirect to home
 
-set up express session
+## ToDo
 
-- api routes for
-    signup ( get ) {
-      check for token
-      redirect
-    }
-    signup ( post ) {
-      save data user data to database
-      verify data check against existing data
-    }
-    login ( get ) {
-      check for token
-      redirect
-    }
-    login ( post ) {
+on client side i need to check for verication and conditionally render
+make an api module to call for sign in sign up and log out
+make a log in component
+make a sign up component
 
-    }
-    verify ( post ) {
-      get token
-    verify token
-    }
-    signout ( post ) {
-      kill session
-     }
+use this++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+axios.post('/api/stripe', toPost)
+.then( (response) => {
+  if (response.ok && window){
+    window.location.href="/thankyou";
+    // or <Redrect to="/thankyou" /> if you are using react-router
+  }
+})
 
-     chance i dont need usr session model  
-     
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
