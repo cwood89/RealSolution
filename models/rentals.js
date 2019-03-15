@@ -1,3 +1,4 @@
+//rentals is the table store all the rental data
 module.exports = function(sequelize, DataTypes) {
     var rentals = sequelize.define("rentals", {
       FMLS:{
