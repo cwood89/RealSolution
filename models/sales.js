@@ -15,6 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       B_H:DataTypes.INTEGER,
       SQFT:DataTypes.INTEGER,
       Price: DataTypes.INTEGER,
+      DOM:DataTypes.INTEGER,
       Hoa:DataTypes.INTEGER,
       CloseDate:DataTypes.STRING,
       Taxes:DataTypes.INTEGER,
