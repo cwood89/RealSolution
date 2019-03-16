@@ -1,20 +1,19 @@
 import React from "react";
 
-function LogIn() {
+function LogIn(props) {
   return (
-    <div>
-      <h2>Login Form</h2>
-      <form action="/api/login" method="POST">
-        <div className="container">
+    <div className="animated fadeInDown" >
+      <div className="hero is-light heroLogin">Login</div>
+      <form className="is-primary" action="/api/login" method="POST">
+        <div className="container signupFieldContainer is-half">
           <label for="email"><b>Email</b></label>
-          <input type="email" placeholder="Enter Email" name="email" required />
+          <input className="input is-success" type="email" placeholder="Enter Email" name="email" required />
           <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required />
+          <input className="input is-success" type="password" placeholder="Enter Password" name="password" required />
           <button type="submit">Login</button>
           {/* <input type="checkbox" checked="checked" name="remember"> Remember </input> */}
         </div>
       </form>
-
     </div>
 
   )

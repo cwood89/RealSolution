@@ -66,10 +66,9 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
-        <nav class="navbar is-dark" role="navigation" aria-label="main navigation"><h1 className="mainBrand">Real Solution</h1></nav>
+      <div className="animated fadeInDown">
         <div className="loginMasterContainer">
-          <div className="hero is-light heroLogin">Login page</div>
+          <div className="hero is-light heroLogin">Sign Up!</div>
           <form onSubmit={this.handleSubmit} className="is-primary">
             <div className="signupFieldContainer is-half">
               <label>
