@@ -53,12 +53,11 @@ function Landing() {
               <p className="animated fadeInRight">Real Solution is a service which allows you to find investment properties quickly, manage them intelligently, and stay on track in a competitive market</p>
             </div>
             <div className="container is-half" id="buttonPlace">
-              { setTimeout(() => ReactDOM.render(buttons, document.getElementById('buttonPlace')), 5000)}
+              {/* { setTimeout(() => ReactDOM.render(buttons, document.getElementById('buttonPlace')), 5000)} */}
             </div>
         </section>
-      </div>
-    </Router>
-  );
-}
+    </div>
+</Router>
+  )}
 
 export default Landing;

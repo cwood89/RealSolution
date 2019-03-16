@@ -10,11 +10,26 @@ export default {
     return axios.get("/api/comps/" + id);
   },
 
-  signUp(user) {
-    return axios.post("api/signup", user);
+  signUp(user, cb) {
+    return axios.post("api/signup", user)
+      .then(() => {
+        cb()
+      }
+      );
   },
-  LogIn(user) {
-    return axios.post("api/login", user);
-  }
-};
 
+  logIn(user, cb) {
+    axios.post("api/login", user).then((res) => {
+      if (res.data.success) {
+        this.isAuthenticated = true
+        cb()
+      } else {
+        alert(res.data.message)
+      }
+    })
+  },
+
+  logOut() {
+
+  },
+};
