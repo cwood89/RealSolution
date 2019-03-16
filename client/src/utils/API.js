@@ -19,13 +19,19 @@ export default {
   },
 
   logIn(user, cb) {
-    axios.post("api/login", user).then((res) => {
+    return axios.post("api/login", user).then((res) => {
       if (res.data.success) {
-        this.isAuthenticated = true
         cb()
       } else {
         alert(res.data.message)
       }
+    })
+  },
+
+  verify() {
+    return axios.get("/api/verify").then((res) => {
+      console.log(res.data)
+      return res.data.success;
     })
   },
 

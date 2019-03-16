@@ -27,9 +27,7 @@ function Login(props) {
                 password: document.getElementById("password").value
               }
               event.preventDefault();
-              console.log(props.authorize)
               API.logIn(user, () => {
-                props.authorize()
                 props.history.push("/otl")
               })
 

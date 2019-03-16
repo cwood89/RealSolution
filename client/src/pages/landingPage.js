@@ -2,11 +2,15 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from "react-router-dom";
 import SignUp from "./signupPage";
 import Login from "./loginPage";
-
+import PrivateRoute from "../components/privateRoute"
+import OTLresults from "./OTLresults";
+import API from "../utils/API"
+let isAuthorized = API.verify()
 
 function Landing(props) {
   return (
@@ -22,9 +26,11 @@ function Landing(props) {
           </li>
         </ul>
 
-
-        <Route path="/login" render={() => <Login authorize={props.authorize} />} />
-        <Route path="/signup" render={() => <SignUp authorize={props.authorize} />} />
+        <Switch>
+          <Route exact path="/login" render={() => <Login />} />
+          <Route exact path="/signup" render={() => <SignUp />} />
+          <PrivateRoute isAuthorized={isAuthorized} exact path="/otl" component={OTLresults} />
+        </Switch>
       </div>
     </Router>
   );
