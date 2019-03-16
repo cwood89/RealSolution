@@ -10,47 +10,48 @@ import CompResults from "./pages/CompResults";
 import About from "./pages/About";
 import Profile from "./pages/Profile"
 import Landing from "./pages/landingPage"
-import SignUp from "./pages/signupPage"
-import Login from "./pages/loginPage"
 import PrivateRoute from "./components/privateRoute"
-import API from "./utils/API";
+
+
 
 class RouteControl extends Component {
   constructor() {
     super()
     this.state = {
-      isAuthenticated: true // set to false in production
+      isAuthorized: false
     }
-    this.LogIn = this.LogIn.bind(this)
+    this.authorize = this.authorize.bind(this);
+    this.logOut = this.logOut.bind(this);
+
   }
 
-  LogIn(user) {
-    API.LogIn(user).then((res) => {
-      if (res.success) {
-        this.setState({
-          isAuthenticated: true
-        })
-        return < Redirect to="/otl" />
-
-      }
-    })
+  authorize() {
+    this.setState({ isAuthorized: true })
+    console.log(this.state
+    )
   }
 
-  logOut() { }
+  logOut() {
+    this.setState({ isAuthorized: false })
+  }
 
   render() {
     return (
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/public" component={SignUp} />
-            <Route exact path="/login" component={Login} />
-            <PrivateRoute
-              exact path="/otl" component={OTLresults} isAuthenticated={this.state.isAuthenticated} />
-            <PrivateRoute exact path="/comps/:id" component={CompResults} isAuthenticated={this.state.isAuthenticated} />
-            <PrivateRoute exact path="/about" component={About} isAuthenticated={this.state.isAuthenticated} />
-            <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={this.state.isAuthenticated} />
+            <Route exact path="/" render={() => <Landing authorize={this.authorize} />} />
+            <Route exact path="/login" render={() => <Landing authorize={this.authorize} />} />
+            <Route exact path="/signup" render={() => <Landing authorize={this.authorize} />} />
+            <PrivateRoute isAuthorized={this.state.isAuthorized} exact path="/otl" component={OTLresults} />
+            <PrivateRoute isAuthorized={this.state.isAuthorized} exact path="/comps/:id" component={CompResults} />
+            <PrivateRoute isAuthorized={this.state.isAuthorized} exact path="/about" component={About} />
+            <PrivateRoute isAuthorized={this.state.isAuthorized} exact path="/profile" component={Profile} />
+            <Route path="*" render={() => {
+              return (
+                <h1>404 NOT FOUND</h1>
+              )
+            }} />
           </Switch>
         </div>
       </Router>
@@ -59,21 +60,3 @@ class RouteControl extends Component {
 }
 
 export default RouteControl;
-
-
-// // authorization (object)
-// const fakeAuth = {
-//   isAuthenticated: false,
-//   // set to true in 100ms ???? why async???
-//   authenticate(cb) {
-//     this.isAuthenticated = true;
-//     setTimeout(cb, 100); // fake async
-//   },
-//   // vice versa
-//   signout(cb) {
-//     this.isAuthenticated = false;
-//     setTimeout(cb, 100);
-//   }
-// };
-
-

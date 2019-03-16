@@ -3,20 +3,20 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-function PrivateRoute({ isAuthenticated, component: Component, ...rest }) {
+function PrivateRoute({ isAuthorized, component: Component, ...rest }) {
   return (
     <Route
       {...rest}
-      render={props =>
-        isAuthenticated ? ( //=======================
-          // need to link ths to session validation
-          <Component {...props} />
-        ) : (
-            <Redirect to={{
-              pathname: "/",
-              state: { from: props.location }
-            }} />
-          )}
+      render={props => {
+        if (isAuthorized) {
+          return <Component {...props} />
+        } else {
+          return <Redirect to={{
+            pathname: "/",
+            state: { from: props.location }
+          }} />
+        }
+      }}
     />
   );
 }

@@ -25,11 +25,11 @@ module.exports = function (app) {
   })
   );
 
-  // this will log user out if theres a cookie without a session usually happens when 
+  // this will log user out if theres a cookie without a session usually happens when you restart server without logging out
   app.use((req, res, next) => {
     console.log(req.cookies)
-    if (req.cookies.user_sid && !req.session.user) {
-      res.clearCookie('user_sid');
+    if (req.cookies.sid && !req.session.userId) {
+      req.cookie.sid = "";
     }
     next();
   });

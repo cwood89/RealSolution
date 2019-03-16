@@ -7,7 +7,8 @@ import {
 import SignUp from "./signupPage";
 import Login from "./loginPage";
 
-function Landing() {
+
+function Landing(props) {
   return (
     <Router>
       <div>
@@ -20,8 +21,10 @@ function Landing() {
             <Link to="/signup">Sign Up</Link>
           </li>
         </ul>
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
+
+
+        <Route path="/login" render={() => <Login authorize={props.authorize} />} />
+        <Route path="/signup" render={() => <SignUp authorize={props.authorize} />} />
       </div>
     </Router>
   );

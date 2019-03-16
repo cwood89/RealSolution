@@ -107,7 +107,7 @@ module.exports = function (app) {
       if (results.length != 1) {
         return res.send({
           success: false,
-          message: "System Failure!"
+          message: "Email doesnt exist."
         })
       }
       // validating password
@@ -119,12 +119,11 @@ module.exports = function (app) {
       } else {
         // creating a session
         let user = results[0].dataValues;
-        console.log(user.id)
         req.session.userId = user.id;
-        console.log(req.session)
+        req.session.save();
         return res.send({
           success: true,
-          message: "logged In",
+          message: "Logged In",
         })
       }
     }).catch((err) => {
@@ -138,23 +137,13 @@ module.exports = function (app) {
   })
 
   app.get("/api/logout", (req, res) => {
-    res.clearCookie('user_sid');
-    res.send({
-      success: true,
-      message: "Signed out"
+    req.session.destroy(function (err) {
+      req.cookie.sid = "";
+      res.send({
+        success: true,
+        message: "Signed out"
+      })
     })
   })
-  // app.get("/api/signup", (req, res) => {
-  //   // save data user data to database
-  //   // verify data check against existing data
-  // })
-
-  // app.get("/api/login", (req, res) => {
-  //   // check for token
-
-  //   // redirect
-  // })
-
-
 
 }
