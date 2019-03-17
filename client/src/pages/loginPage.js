@@ -1,6 +1,9 @@
 import React from "react"
 import API from "../utils/API"
 import { withRouter } from "react-router-dom"
+import Router from "react-router-dom"
+
+
 function Login(props) {
 
   return (
@@ -31,6 +34,7 @@ function Login(props) {
               API.logIn(user, () => {
                 props.authorize()
                 props.history.push("/otl")
+                // this.context.history.push('/otl')
               })
 
             }}>LogIn</button>

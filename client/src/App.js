@@ -1,8 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import RouteControl from "./Routing"
-function App() {
-  return (
-    <RouteControl />
-  )
+
+class App extends Component {
+
+
+  render() {
+
+    return (
+      <RouteControl />
+      )
+    }
 }
 export default App;

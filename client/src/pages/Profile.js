@@ -40,6 +40,7 @@ class Profile extends Component {
     const element = (
       <div>
         <h1>properties settings</h1>
+        <p>Saved Zip codes:</p>
       </div>
     );
     ReactDOM.render(element, document.getElementById('settingTarget'));

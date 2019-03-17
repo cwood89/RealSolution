@@ -18,7 +18,7 @@ class RouteControl extends Component {
   constructor() {
     super()
     this.state = {
-      isAuthorized: false
+      isAuthorized: true
     }
     this.authorize = this.authorize.bind(this);
     this.logOut = this.logOut.bind(this);
@@ -27,8 +27,7 @@ class RouteControl extends Component {
 
   authorize() {
     this.setState({ isAuthorized: true })
-    console.log(this.state
-    )
+    console.log(this.state)
   }
 
   logOut() {
@@ -39,7 +38,7 @@ class RouteControl extends Component {
     return (
       <Router>
         <div>
-          <Switch>
+          <Switch> 
             <Route exact path="/" render={() => <Landing authorize={this.authorize} />} />
             <Route exact path="/login" render={() => <Landing authorize={this.authorize} />} />
             <Route exact path="/signup" render={() => <Landing authorize={this.authorize} />} />

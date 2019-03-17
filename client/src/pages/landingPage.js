@@ -10,7 +10,7 @@ import ReactDOM from "react-dom"
 
 
 
-function Landing() {
+function Landing(props) {
 
     let buttons = (
       <div>
@@ -44,8 +44,8 @@ function Landing() {
         </div>
       </nav>
         <div> 
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={SignUp} />
+        <Route path="/login" render={() => <Login authorize={props.authorize} />} />
+        <Route path="/signup" render={() => <SignUp authorize={props.authorize} />} />
         </div>
         <section className="landingTextWriteup">
             <div className="container is-half landing0">

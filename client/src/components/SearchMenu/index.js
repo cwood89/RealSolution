@@ -1,66 +1,37 @@
 
 import React, { Component } from "react";
-class SearchMenu extends Component {
-  constructor() {
-    super()
-    this.state = {
-      data: []
-    }
-  }
-
-  render() {
-    return (
-      <div>
+// import TownScroller from "../TownScroller/index.js"
 
 
+function SearchMenu(props) {
 
-<aside className="menu">
+  // Need to make a thing which takes all the returned towns and displays them in the townScroller list.
+  return (
+    <div>
+      <aside className="menu">
 
-  <ul className="menu-list">
-    <li><a>Estimated Offer</a></li>
-      <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
-      </div>
-    <li><a>Price</a></li>
-      <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
-      </div>
-    <li><a>Square Footage</a></li>
-      <div  class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
-      </div>
-    <li><a>Town</a></li>
-    <div className="townScroller">
-      <p>Town 1</p>
-      <p>Town 1</p>
-      <p>Town 1</p>
-      <p>Town 1</p>
-      <p>Town 1</p>
-      <p>Town 1</p>
-      <p>Town 1</p>
-      <p>Town 1</p>
-      <p>Town 1</p>
-   
+        <ul className="menu-list">
+          <li>Estimated Offer</li>
+          <div className="menuInputs">
+            <input className="input" type="text" name="estOfferMin" value="Min: 0" />
+            <input className="input" type="text" name="estOfferMax" value="Max: 100" />
+          </div>
+          <li>Price</li>
+          <div className="menuInputs">
+            <input className="input" type="text" name="estOfferMin" value="Min: 0" />
+            <input className="input" type="text" name="estOfferMax" value="Max: 100" />
+          </div>
+          <li>Square Footage</li>
+          <div className="menuInputs">
+            <input className="input" type="text" name="estOfferMin" value="Min: 0" />
+            <input className="input" type="text" name="estOfferMax" value="Max: 100" />
+          </div>
+        </ul>
+      </aside>
+
     </div>
-    <li><a>Neighborhood</a></li>
-    <div className="hoodScroller">
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-      <p>Neighborhood 1</p>   
-    </div>
-  </ul>
-</aside>
+  )
 
-      </div>
-    )
-  }
 }
 
 export default SearchMenu;

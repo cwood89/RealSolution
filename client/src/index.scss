@@ -107,9 +107,9 @@ p {
 
 // Menu Scroller
 
-.hoodScroller, .townScroller {
+.townScroller {
   width: auto;
-  height: 150px;
+  height: 300px;
   overflow-y: auto;
 }
 
@@ -135,4 +135,9 @@ p {
 
 .landingTextWriteup {
   margin-top: 14em;
+}
+
+.menuInputs {
+  width: 100px;
+  display: flex;
 }
