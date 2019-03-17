@@ -29,7 +29,7 @@ module.exports = function (app) {
   app.use((req, res, next) => {
     console.log(req.cookies)
     if (req.cookies.sid && !req.session.userId) {
-      req.cookie.sid = "";
+      req.cookies.sid = "";
     }
     next();
   });

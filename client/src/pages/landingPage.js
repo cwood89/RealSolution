@@ -2,13 +2,21 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from "react-router-dom";
 import SignUp from "./signupPage";
 import Login from "./loginPage";
+<<<<<<< HEAD
 import ReactDOM from "react-dom"
 
 
+=======
+import PrivateRoute from "../components/privateRoute"
+import OTLresults from "./OTLresults";
+import API from "../utils/API"
+let isAuthorized = API.verify()
+>>>>>>> 95d33b98259cd85e8f907a3bd82da2c369a5d1b9
 
 function Landing(props) {
 
@@ -25,6 +33,7 @@ function Landing(props) {
   return (
     <Router>
       <div>
+<<<<<<< HEAD
         <nav className="navbar is-dark" role="navigation" aria-label="main navigation" >
           <div className="navbar-brand">
             <a className="navbar-item">
@@ -59,5 +68,26 @@ function Landing(props) {
     </div>
 </Router>
   )}
+=======
+        <h1>Real Solution</h1>
+        <ul>
+          <li>
+            <Link to="/login">Log In</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route exact path="/login" render={() => <Login />} />
+          <Route exact path="/signup" render={() => <SignUp />} />
+          <PrivateRoute isAuthorized={isAuthorized} exact path="/otl" component={OTLresults} />
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+>>>>>>> 95d33b98259cd85e8f907a3bd82da2c369a5d1b9
 
 export default Landing;

@@ -138,12 +138,32 @@ module.exports = function (app) {
 
   app.get("/api/logout", (req, res) => {
     req.session.destroy(function (err) {
-      req.cookie.sid = "";
+      req.cookies.sid = "";
       res.send({
         success: true,
         message: "Signed out"
       })
     })
   })
+
+  app.get("/api/verify", (req, res) => {
+    let verify = {
+      cookie: req.cookies.sid,
+      session: req.session.userId
+    }
+    console.log(verify)
+    if (verify.cookie && verify.session) {
+      res.send({
+        success: true,
+        message: verify
+      })
+    } else {
+      res.send({
+        success: false,
+        message: "Not verified"
+      })
+    }
+  })
+
 
 }
