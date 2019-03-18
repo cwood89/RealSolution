@@ -1,8 +1,7 @@
 var db = require("../models");
 
-const rentEstDrop = async (req,res) =>{
-    await db.rent_ests.destroy({where:{}});
-    next();
+const rentEstDrop = async (req,res,next) =>{
+    await db.rent_ests.destroy({where:{}}).then(next);
 }
 
 module.exports = function(app) {
