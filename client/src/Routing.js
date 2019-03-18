@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,7 +14,6 @@ import PrivateRoute from "./components/privateRoute"
 
 
 
-<<<<<<< HEAD
 class RouteControl extends Component {
   constructor() {
     super()
@@ -57,29 +56,6 @@ class RouteControl extends Component {
       </Router>
     );
   }
-=======
-function RouteControl(props) {
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/" render={() => <Landing />} />
-          <Route exact path="/login" render={() => <Landing />} />
-          <Route exact path="/signup" render={() => <Landing />} />
-          <PrivateRoute exact path="/otl" component={OTLresults} />
-          <PrivateRoute exact path="/comps/:id" component={CompResults} />
-          <PrivateRoute exact path="/about" component={About} />
-          <PrivateRoute exact path="/profile" component={Profile} />
-          <Route path="*" render={() => {
-            return (
-              <h1>404 NOT FOUND</h1>
-            )
-          }} />
-        </Switch>
-      </div>
-    </Router>
-  );
->>>>>>> 95d33b98259cd85e8f907a3bd82da2c369a5d1b9
 }
 
 

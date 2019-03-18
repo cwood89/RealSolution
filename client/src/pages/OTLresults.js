@@ -1,5 +1,6 @@
 
 import React, { Component } from "react";
+import ReactDOM from 'react-dom'
 import Header from "../components/header";
 import Table from "../components/ResultTable";
 import Row from "../components/TableRow";
@@ -30,6 +31,24 @@ class OTLresults extends Component {
       })
     })
   }
+
+  displayModal(data) {
+    
+    console.log(data)
+
+    let modal = (
+      <div>
+          {data}
+      </div>
+    )
+
+
+
+    ReactDOM.render(
+     modal
+    , document.getElementById("modalTarget"));
+  }
+
 
   async noDuplicateTowns() {
       // let allTownNames = []
@@ -62,12 +81,6 @@ class OTLresults extends Component {
       // }
       // ).then(() => alert(noDuplicateTownNames))
     }
-
-
-
-
-
-
     render() {
       return (
         <div>
@@ -81,11 +94,13 @@ class OTLresults extends Component {
             return (
               <Row
                 key={data.subject}
-                data={data} />
+                data={data} 
+                modal={this.displayModal}/>
             )
           }
           )}
         </Table>
+        <div id="modalTarget"></div>
         </div>
       </div>
     )

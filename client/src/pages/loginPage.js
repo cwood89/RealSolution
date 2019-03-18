@@ -9,8 +9,7 @@ function Login(props) {
   return (
 
     <div>
-      <nav className="navbar is-dark" role="navigation" aria-label="main navigation"><h1 className="mainBrand">Real Solution</h1></nav>
-      <div className="loginMasterContainer">
+      <div className="loginMasterContainer animated fadeInDown">
         <div className="hero is-light heroLogin">Login page</div>
         <form className="is-primary">
           <div className="signupFieldContainer is-half">
@@ -35,7 +34,7 @@ function Login(props) {
                 // this.context.history.push('/otl')
               })
 
-            }}>LogIn</button>
+            }}>Log In</button>
         </form>
       </div>
     </div >
