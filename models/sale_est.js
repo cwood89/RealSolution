@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var sale_ests = sequelize.define("sale_est", {
+    var sale_ests = sequelize.define("sale_ests", {
       subject:{
         type:DataTypes.STRING,
         primaryKey:true
