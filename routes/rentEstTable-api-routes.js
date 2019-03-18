@@ -7,10 +7,11 @@ const rentEstDrop = async (req,res,next) =>{
 module.exports = function(app) {
     app.get("/api/rentEst",rentEstDrop,async function(req, res) {
     var QUERY = 
-        "WITH min_year as ( "+
-        "SELECT subject, subject_sub, bedrooms, size, year_build, size * psf as est_sale, market_value as comp_sale"+
+        "WITH min_year as"+
+        "("+
+        "SELECT subject, subject_sub, bedrooms, size, year_build, size * psf as est_sale, market_value as comp_sale "+
         "FROM sale_finds "+
-        "WHERE size_diff in (SELECT MIN(size_diff) FROM sale_finds GROUP BY subject)) "+
+        "WHERE size_diff in (SELECT MIN(size_diff) FROM sale_finds GROUP BY subject) ) "+
         "SELECT subject, subject_sub, bedrooms, size, year_build,est_sale, comp_sale "+
         "FROM min_year "+
         "WHERE est_sale IN ( SELECT max(est_sale) FROM min_year GROUP BY subject);"

@@ -8,7 +8,7 @@ module.exports = function(app) {
     app.get("/api/saleEst",saleEstDrop,async function(req, res) {
     var QUERY = 
         "WITH min_year as ( "+
-        "SELECT subject, subject_sub, bedrooms, size, year_build, size * psf as est_sale, market_value as comp_sale"+
+        "SELECT subject, subject_sub, bedrooms, size, year_build, size * psf as est_sale, market_value as comp_sale "+
         "FROM sale_finds "+
         "WHERE size_diff in (SELECT MIN(size_diff) FROM sale_finds GROUP BY subject)) "+
         "SELECT subject, subject_sub, bedrooms, size, year_build,est_sale, comp_sale "+
