@@ -13,10 +13,24 @@ class OTLresults extends Component {
     super()
     this.state = {
       data: [],
-      townNames: []
+      origData: [],
+      townNames: [],
+      offMin: '',
+      offMax: '',
+      priceMin: '',
+      priceMax: '',
+      sqftMin: '',
+      sqftMax: ''
     }
     this.getResults = this.getResults.bind(this)
     this.noDuplicateTowns = this.noDuplicateTowns.bind(this)
+    this.minOfferFunc = this.minOfferFunc.bind(this)
+    this.maxOfferFunc = this.maxOfferFunc.bind(this)
+    this.minPriceFunc = this.minPriceFunc.bind(this)
+    this.maxPriceFunc = this.maxPriceFunc.bind(this)
+    this.minSqftFunc = this.minSqftFunc.bind(this)
+    this.maxSqftFunc = this.maxSqftFunc.bind(this)
+    this.filterResults = this.filterResults.bind(this)
   }
 
   async componentDidMount() {
@@ -27,7 +41,8 @@ class OTLresults extends Component {
   getResults() {
     API.listOTL().then((data) => {
       this.setState({
-        data: data.data
+        data: data.data,
+        origData: data.data
       })
     })
   }
@@ -81,13 +96,99 @@ class OTLresults extends Component {
       // }
       // ).then(() => alert(noDuplicateTownNames))
     }
+
+                                                          minOfferFunc(event) {
+                                                            //update the state with the new value
+                                                          this.setState({
+                                                            offMin: event.target.value
+                                                          })
+                                                          }
+                                                          
+                                                          maxOfferFunc(event) {
+                                                            this.setState({
+                                                              offMax: event.target.value
+                                                            })
+                                                          }
+
+                                                          minPriceFunc(event) {
+                                                            this.setState({
+                                                              priceMin: event.target.value
+                                                            })
+                                                          }
+
+                                                          maxPriceFunc(event) {
+                                                            this.setState({
+                                                              priceMax: event.target.value
+                                                            })
+                                                          }
+
+                                                          minSqftFunc(event) {
+                                                            this.setState({
+                                                              sqftMin: event.target.value
+                                                            })
+                                                          }
+
+                                                          maxSqftFunc(event) {
+                                                            this.setState({
+                                                              sqftMax: event.target.value
+                                                            })
+                                                          }
+
+
+
+    filterResults(parameter) {
+      if (parameter === "offer") {
+        // alert(this.state.offMin)
+        // alert(this.state.offMax)
+        // console.log(this.state.origData)
+        
+        //take this.state.data and filter it according to the parameters set in state
+        let newResult = this.state.data.filter((data) => data.otl >= this.state.offMin)
+        let newerResult = newResult.filter((data) => data.otl <= this.state.offMax)
+        
+        this.setState({
+          data: newerResult
+        })
+      }else if (parameter === "price") {
+        let newPriceResult = this.state.data.filter((data) => data.Price >= this.state.priceMin)
+        let newerPriceResult = newPriceResult.filter((data) => data.Price <= this.state.priceMax)
+        this.setState({
+          data: newerPriceResult
+        })
+
+      } else if (parameter === "sqft") {
+        let newSqftResult = this.state.data.filter((data) => data.SQFT >= this.state.sqftMin)
+        let newerSqftResult = newSqftResult.filter((data) => data.SQFT <= this.state.sqftMax)
+        
+        
+        this.setState({
+          data: newerSqftResult
+        })
+      }else {
+        alert('error: filter function called unsuccessfully')
+      }
+    }
+
     render() {
       return (
         <div>
         <Header />
         <PropertyHero />
         <div className="searchAndContent">
-        <SearchMenu />
+        <SearchMenu 
+        minOfferFunc={this.minOfferFunc}
+        maxOfferFunc={this.maxOfferFunc}
+        offMin={this.state.offMin}
+        offMax={this.state.offMax}
+        minPriceFunc={this.minPriceFunc}
+        maxPriceFunc={this.maxPriceFunc}
+        priceMin={this.state.priceMin}
+        priceMax={this.state.priceMax}
+        minSqftFunc={this.minSqftFunc}
+        maxSqftFunc={this.maxSqftFunc}
+        sqftMin={this.state.sqftMin}
+        sqftMax={this.state.sqftMax}
+        filterResults={this.filterResults}/>
         {/* {this.noDuplicateTowns()} */}
         <Table>
           {this.state.data.map((data) => {
