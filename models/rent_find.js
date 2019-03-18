@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
     rental:DataTypes.INTEGER,
     psf:DataTypes.INTEGER,
     size_diff:DataTypes.INTEGER,
+    year_diff:DataTypes.INTEGER,
     comp_DOM:DataTypes.INTEGER,
     createdAt:DataTypes.DATE,
     updatedAt:DataTypes.DATE

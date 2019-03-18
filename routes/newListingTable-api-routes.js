@@ -16,8 +16,10 @@ var ref = dbfirebase.ref("newListing");
 
 //drop all the records first
 const customerListingsDrop = (req,res,next) =>{
-    db.customerListings.destroy({where:{}});
-    next();
+    db.customerListings.destroy({where:{}}).then(function(thing) {
+        console.log(thing);
+        next();
+    });
 }
 
 module.exports = function(app) {

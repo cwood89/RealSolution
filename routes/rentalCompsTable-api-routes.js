@@ -7,11 +7,11 @@ const rentalcompDrop = (req,res,next) =>{
 
 module.exports = function(app) {
     app.get("/api/rentalComps",rentalcompDrop,async function(req, res) {
-    var QUERY = "SELECT customerListings.FMLS AS subject, customerListings.sub as subject_sub, customerListings.B as bedrooms, customerListings.SQFT as size, customerListings.Y as year_build, rentals.fmls as comp_fmls, rentals.Address as comp_address, rentals.B as comp_B, rentals.sqft as comp_size,rentals.Year as comp_year ,rentals.price as rental, round(rentals.price/rentals.sqft,2) as psf, rentals.sqft - customerListings.sqft as size_diff, rentals.Dom as comp_DOM"+
+    var QUERY = "SELECT customerListings.FMLS AS subject, customerListings.sub as subject_sub, customerListings.B as bedrooms, customerListings.SQFT as size, customerListings.Y as year_build, rentals.fmls as comp_fmls, rentals.Address as comp_address, rentals.B as comp_B, rentals.sqft as comp_size,rentals.Year as comp_year ,rentals.price as rental, round(rentals.price/rentals.sqft,2) as psf, abs(rentals.sqft - customerListings.sqft) as size_diff, abs(rentals.Y - customerListings.Y) as year_diff,rentals.Dom as comp_DOM"+
                 " FROM customerListings"+
                 " join rentals on ( upper(rentals.sub) LIKE CONCAT('%', upper(customerListings.sub), '%') or upper(customerListings.sub) LIKE CONCAT('%', upper(rentals.sub), '%') )and customerListings.zip = rentals.zip"+
                 " where customerListings.sub not in ('n/a','None','na') and ( customerListings.sqft < 1.1*rentals.sqft ) and customerListings.Y >= rentals.YEAR - 10 and rentals.sqft != 0"+
-                " ORDER BY customerListings.fmls, size_diff;"
+                " ORDER BY customerListings.fmls, size_diff, year_diff;"
   await db.sequelize.query(QUERY,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
                 
                 if(data){
@@ -30,6 +30,7 @@ module.exports = function(app) {
                             rental:data[i].rental,
                             psf:data[i].psf,
                             size_diff:data[i].size_diff,
+                            year_diff:data[i].year_diff,
                             comp_DOM: data[i].comp_DOM
                           })
                     }

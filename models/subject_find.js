@@ -28,9 +28,5 @@ module.exports = function(sequelize, DataTypes) {
     updatedAt:DataTypes.DATE
   });
   
-  // subject_finds.associate = function(models) {
-  //   subject_finds.hasMany(models.subject_otlists,{foreignKey:'subject',sourceKey:'FMLS'})
-  // }
-  
   return subject_finds;
 };
