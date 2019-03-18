@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var rent_est = sequelize.define("rent_est", {
+    var rent_ests = sequelize.define("rent_est", {
       subject:{
         type:DataTypes.STRING,
         primaryKey:true
@@ -19,5 +19,5 @@ module.exports = function(sequelize, DataTypes) {
         defaultValue:sequelize.NOW
       }
     });
-    return rent_est;
+    return rent_ests;
   };

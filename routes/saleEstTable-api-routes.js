@@ -1,7 +1,7 @@
 var db = require("../models");
 
 const saleEstDrop = async (req,res) =>{
-    await db.sale_est.destroy({where:{}});
+    await db.sale_ests.destroy({where:{}});
     next();
 }
 
@@ -15,11 +15,12 @@ module.exports = function(app) {
         "SELECT subject, subject_sub, bedrooms, size, year_build,est_sale, comp_sale "+
         "FROM min_year "+
         "WHERE est_sale IN ( SELECT max(est_sale) FROM min_year GROUP BY subject);"
+        
   await db.sequelize.query(QUERY,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
                 
                 if(data){
                     for (i=0;i<data.length;i++){
-                        db.sale_est.create({
+                        db.sale_ests.create({
                             subject:data[i].subject,
                             subject_sub:data[i].subject_sub,
                             bedrooms:data[i].bedrooms,

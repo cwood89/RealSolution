@@ -1,7 +1,7 @@
 var db = require("../models");
 
 const rentEstDrop = async (req,res) =>{
-    await db.rent_est.destroy({where:{}});
+    await db.rent_ests.destroy({where:{}});
     next();
 }
 
@@ -19,7 +19,7 @@ module.exports = function(app) {
                 
                 if(data){
                     for (i=0;i<data.length;i++){
-                        db.sale_est.create({
+                        db.rent_ests.create({
                             subject:data[i].subject,
                             subject_sub:data[i].subject_sub,
                             bedrooms:data[i].bedrooms,
