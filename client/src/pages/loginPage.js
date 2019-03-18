@@ -1,8 +1,10 @@
 import React from "react"
 import API from "../utils/API"
-import { withRouter } from "react-router-dom"
-function Login(props) {
+import createBrowserHistory from 'history/createBrowserHistory';
 
+const history = createBrowserHistory({ forceRefresh: true });
+
+function Login() {
   return (
 
     <div>
@@ -28,14 +30,14 @@ function Login(props) {
               }
               event.preventDefault();
               API.logIn(user, () => {
-                props.history.push("/otl")
+                history.push("/otl")
               })
 
-            }}>LogIn</button>
+            }}>Log In</button>
         </form>
       </div>
     </div >
   );
 }
 
-export default withRouter(Login);
+export default Login;
