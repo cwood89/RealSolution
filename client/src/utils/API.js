@@ -12,7 +12,7 @@ export default {
 
   signUp(user, cb) {
     return axios.post("api/signup", user)
-      .then(() => {
+      .then((res) => {
         if (res.data.success === false) {
           alert(res.data.message)
           return;

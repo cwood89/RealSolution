@@ -40,6 +40,9 @@ class Profile extends Component {
     const element = (
       <div>
         <h1>properties settings</h1>
+        <p>Save a  Zip code:</p>
+        <input type='text'></input>
+        <input type='submit'></input>
       </div>
     );
     ReactDOM.render(element, document.getElementById('settingTarget'));

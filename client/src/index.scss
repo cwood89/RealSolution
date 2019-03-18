@@ -16,7 +16,7 @@ body {
 }
 
 .navbar {
-  border-bottom: 3px solid $Tertiary;
+  // border-bottom: 3px solid $Tertiary;
   background-color: $Secondary;
 }
 
@@ -107,9 +107,9 @@ p {
 
 // Menu Scroller
 
-.hoodScroller, .townScroller {
+.townScroller {
   width: auto;
-  height: 150px;
+  height: 300px;
   overflow-y: auto;
 }
 
@@ -131,4 +131,17 @@ p {
 
 .heroLogin {
 
+}
+
+.landingTextWriteup {
+  margin-top: 14em;
+}
+
+.menuInputs {
+  width: 95%;
+  display: flex;
+}
+
+.searchMenu {
+  width: 12%;
 }
