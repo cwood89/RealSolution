@@ -7,7 +7,7 @@ const subjectDrop = (req,res,next) =>{
 
 module.exports = function(app) {
     app.get("/api/subjectFinds",subjectDrop,async function(req, res) {
-    var QUERY = "SELECT customerListings.* , rent_ests.est_rent, sale_est.est_sale "+
+    var QUERY = "SELECT customerListings.* , rent_ests.est_rent, sale_ests.est_sale "+
                 "FROM customerListings "+
                 "JOIN rent_ests on customerListings.FMLS = rent_ests.subject "+
                 "JOIN sale_ests on customerListings.FMLS = sale_ests.subject;"
