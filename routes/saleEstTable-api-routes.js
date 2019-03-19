@@ -15,7 +15,7 @@ module.exports = function(app) {
         ") as min_year "+
         "WHERE est_sale IN (SELECT max(est_sale) FROM min_year GROUP BY subject);"
 
-  await db.sequelize.query(QUERY,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
+  await db.sequelize.query(QUERY,{raw:true, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
                 
                 if(data){
                     for (i=0;i<data.length;i++){
