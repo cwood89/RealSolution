@@ -30,6 +30,7 @@ require("./routes/saleCompsTable-api-routes")(app);
 require("./routes/rentEstTable-api-routes")(app);
 require("./routes/saleEstTable-api-routes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/subjectWithComps-api-routes")(app);
 
 var syncOptions = { force: false };
 
