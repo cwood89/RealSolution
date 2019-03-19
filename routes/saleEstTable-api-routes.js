@@ -14,7 +14,7 @@ module.exports = function(app) {
         "WHERE year_diff in (SELECT MIN(year_diff) FROM sale_finds GROUP BY subject)"+
         ") "
 
-  await db.sequelize.query(QUERY,{raw:true, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
+  await db.sequelize.query(QUERY,{raw:true}).then( data=> {
                 
                 if(data){
                     for (i=0;i<data.length;i++){
