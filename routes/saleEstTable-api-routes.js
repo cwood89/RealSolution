@@ -23,6 +23,8 @@ module.exports = function(app) {
                           })
                     }
                 }
-        }).then(res.send("success"))
+        })
     })
+
+    res.send("success")
 }

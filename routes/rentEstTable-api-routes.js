@@ -13,8 +13,8 @@ module.exports = function(app) {
     "WHERE (size_diff in (SELECT MIN(size_diff) FROM rent_finds GROUP BY subject)) and WHERE bedrooms = comp_B "+
     "GROUP BY subject "
 
-  await db.sequelize.query(QUERY,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
-                
+  await db.sequelize.query(QUERY,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {            
+
                 if(data){
                     for (i=0;i<data.length;i++){
                         db.rent_ests.create({
@@ -23,6 +23,8 @@ module.exports = function(app) {
                           })
                     }
                 }
-        }).then(res.send("success"))
+        })
     })
+
+    res.send("success")
 }
