@@ -8,9 +8,10 @@ module.exports = function(app) {
     app.get("/api/saleEst",saleEstDrop,async function(req, res) {
     var QUERY =  
        
-        "SELECT subject, subject_sub, bedrooms, size, year_build, size * psf as est_sale, market_value as comp_sale "+
+        "SELECT subject, subject_sub, bedrooms, size, year_build, size * avg(psf) as est_sale"+
         "FROM sale_finds "+
-        "WHERE year_diff in (SELECT MIN(year_diff) FROM sale_finds GROUP BY subject)"
+        "WHERE year_diff in (SELECT MIN(year_diff) FROM sale_finds WHERE bedrooms = comp_B GROUP BY subject) "+
+        "GROUP BY subject"
 
   await db.sequelize.query(QUERY,{raw:true}).then( data=> {
     res.send(data)
