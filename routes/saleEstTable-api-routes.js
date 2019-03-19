@@ -24,7 +24,9 @@ module.exports = function(app) {
                     }
                 }
         })
+
+        res.send("success")
     })
 
-    res.send("success")
+    
 }
