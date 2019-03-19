@@ -1,7 +1,7 @@
 import React from "react"
 import API from "../utils/API"
 import createBrowserHistory from 'history/createBrowserHistory';
-import { Link } from "react-router-dom";
+import Nav from "../components/nav/newNav"
 
 const history = createBrowserHistory({ forceRefresh: true });
 
@@ -11,25 +11,7 @@ function SignUp() {
   return (
 
     <div>
-      <nav className="navbar is-dark" role="navigation" aria-label="main navigation" >
-        <div className="navbar-brand">
-          <a className="navbar-item">
-            <div className="mainBrand"><a href="/">Real Solution</a></div>
-          </a>
-        </div>
-
-        <div className="navbar-end">
-          <ul>
-            <li>
-              <a className="navbar-item" ><Link to="/login">Log In</Link></a>
-            </li>
-            <li>
-              <a className="navbar-item" ><Link to="/signup">Sign Up</Link></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
+      <Nav />
       <div className="animated fadeInDown">
         <div className="loginMasterContainer">
           <div className="hero is-light heroLogin">Sign Up!</div>

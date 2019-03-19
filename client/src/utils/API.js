@@ -49,9 +49,20 @@ export default {
         localStorage.setItem("auth", res.data.message)
       }
     })
-  }
+  },
 
-  // logOut() {
-  // localStorage.removeItem('auth')
-  // },
+  logOut(cb) {
+    return axios.get("api/logout")
+      .then((res) => {
+        if (res.data.success === false) {
+          alert(res.data.message)
+          return;
+        }
+        localStorage.removeItem('auth')
+        this.verify().then(() => {
+          cb();
+        })
+
+      })
+  },
 };

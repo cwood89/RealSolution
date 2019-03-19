@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../nav";
 
-function Header(props) {
+function Header() {
   return (
     <section className="hero is-medium is-dark is-bold">
       <div className="hero-head">

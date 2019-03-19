@@ -1,27 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Nav from "../components/nav/newNav"
 function Landing() {
   return (
     <div>
-      <nav className="navbar is-dark" role="navigation" aria-label="main navigation" >
-        <div className="navbar-brand">
-          <a className="navbar-item">
-            <div className="mainBrand"><a href="/">Real Solution</a></div>
-          </a>
-        </div>
-
-        <div className="navbar-end">
-          <ul>
-            <li>
-              <a className="navbar-item" ><Link to="/login">Log In</Link></a>
-            </li>
-            <li>
-              <a className="navbar-item" ><Link to="/signup">Sign Up</Link></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Nav />
       <section className="landingTextWriteup">
         <div className="container is-half landing0">
           <h1 className="animated fadeInLeft">Invest Wisely</h1>

@@ -138,11 +138,19 @@ module.exports = function (app) {
 
   app.get("/api/logout", (req, res) => {
     req.session.destroy(function (err) {
-      req.cookies.sid = "";
-      res.send({
-        success: true,
-        message: "Signed out"
-      })
+      if (err) {
+        res.send({
+          success: false,
+          message: err
+        })
+        return;
+      } else {
+        req.cookies.sid = "";
+        res.send({
+          success: true,
+          message: "Signed out"
+        })
+      }
     })
   })
 

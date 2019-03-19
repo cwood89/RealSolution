@@ -32,7 +32,19 @@ class OTLresults extends Component {
     this.maxSqftFunc = this.maxSqftFunc.bind(this)
     this.filterResults = this.filterResults.bind(this)
   }
+  // ==============================================
+  setStateAsync(state) {
+    return new Promise((resolve) => {
+      this.setState(state, resolve)
+    });
+  }
 
+  async handleChange(input) {
+    await this.setStateAsync({ load: true });
+    this.props.actions.getItemsFromThirtParty(input);
+    await this.setStateAsync({ load: false })
+  }
+  // ================================================================
   async componentDidMount() {
     await this.getResults()
     this.noDuplicateTowns()

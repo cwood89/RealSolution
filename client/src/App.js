@@ -1,5 +1,5 @@
 import React from "react";
-import RouteControl from "./Routing";
+import RouteControl from "./RouteControl";
 
 function App() {
   return (
