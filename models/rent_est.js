@@ -6,11 +6,11 @@ module.exports = function(sequelize, DataTypes) {
       },
       est_rent:DataTypes.INTEGER,
       createdAt:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.date,
         defaultValue:Sequelize.NOW
       },
       updatedAt:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.date,
         defaultValue:Sequelize.NOW
       }
     });
