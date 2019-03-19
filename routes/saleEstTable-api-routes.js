@@ -7,28 +7,26 @@ const saleEstDrop = async (req,res,next) =>{
 module.exports = function(app) {
     app.get("/api/saleEst",saleEstDrop,async function(req, res) {
     var QUERY =  
-        "SELECT subject, subject_sub, bedrooms, size, year_build,est_sale, comp_sale "+
-        "FROM ("+
+       
         "SELECT subject, subject_sub, bedrooms, size, year_build, size * psf as est_sale, market_value as comp_sale "+
         "FROM sale_finds "+
-        "WHERE year_diff in (SELECT MIN(year_diff) FROM sale_finds GROUP BY subject)"+
-        ") "
+        "WHERE year_diff in (SELECT MIN(year_diff) FROM sale_finds GROUP BY subject)"
 
   await db.sequelize.query(QUERY,{raw:true}).then( data=> {
                 
-                if(data){
-                    for (i=0;i<data.length;i++){
-                        db.sale_ests.create({
-                            subject:data[i].subject,
-                            subject_sub:data[i].subject_sub,
-                            bedrooms:data[i].bedrooms,
-                            size:data[i].size,
-                            year_build:data[i].year_build,
-                            est_sale:data[i].est_sale,
-                            comp_sale:data[i].comp_sale
-                          })
-                    }
-                }
+                // if(data){
+                //     for (i=0;i<data.length;i++){
+                //         db.sale_ests.create({
+                //             subject:data[i].subject,
+                //             subject_sub:data[i].subject_sub,
+                //             bedrooms:data[i].bedrooms,
+                //             size:data[i].size,
+                //             year_build:data[i].year_build,
+                //             est_sale:data[i].est_sale,
+                //             comp_sale:data[i].comp_sale
+                //           })
+                //     }
+                // }
         })
 
    res.send("success")
