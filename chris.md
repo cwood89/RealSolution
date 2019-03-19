@@ -19,8 +19,13 @@ axios.post('/api/stripe', toPost)
 .then( (response) => {
   if (response.ok && window){
     window.location.href="/thankyou";
-    // or <Redrect to="/thankyou" /> if you are using react-router
+    // or `<Redrect to="/thankyou" />` if you are using react-router
   }
 })
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+logout functionality
+need to figure out a way to set a life span on the local storage auth
+create model for saved properties(keep in mind that they have to match with the user)
+api function for saving property, getting saved properties, deleting properties
+express routes for CRUD operations.

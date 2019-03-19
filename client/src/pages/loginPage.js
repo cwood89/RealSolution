@@ -1,14 +1,14 @@
 import React from "react"
+import Nav from "../components/nav/newNav"
 import API from "../utils/API"
-import { withRouter } from "react-router-dom"
-import Router from "react-router-dom"
+import createBrowserHistory from 'history/createBrowserHistory';
+const history = createBrowserHistory({ forceRefresh: true });
 
-
-function Login(props) {
-
+function Login() {
   return (
 
     <div>
+      <Nav />
       <div className="loginMasterContainer animated fadeInDown">
         <div className="hero is-light heroLogin">Login page</div>
         <form className="is-primary">
@@ -30,8 +30,7 @@ function Login(props) {
               }
               event.preventDefault();
               API.logIn(user, () => {
-                props.history.push("/otl")
-                // this.context.history.push('/otl')
+                history.push("/otl")
               })
 
             }}>Log In</button>
@@ -41,4 +40,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(Login);
+export default Login;

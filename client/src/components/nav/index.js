@@ -1,5 +1,7 @@
 import React from "react";
-
+import API from "../../utils/API"
+import createBrowserHistory from 'history/createBrowserHistory';
+const history = createBrowserHistory({ forceRefresh: true });
 function Nav() {
 
   return (
@@ -31,6 +33,12 @@ function Nav() {
             <a href="/settings" className="dropdown-item is-active animated zoomInRight">
               Settings
         {/* When this button is clicked, it should go to the Profile page and the settings pane should open automatically */}
+            </a>
+            <a className="dropdown-item is-active animated zoomInRight" onClick={() => {
+              API.logOut(() => {
+                history.push("/")
+              })
+            }}>Log Out
             </a>
           </span>
         </div>

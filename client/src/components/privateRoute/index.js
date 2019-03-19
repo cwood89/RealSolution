@@ -3,23 +3,18 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import axios from "axios"
-function PrivateRoute({ isAuthorized, component: Component, ...rest }) {
+function PrivateRoute({ component: Component, ...rest }) {
   return (
     <Route
       {...rest}
-      render={props => {
-
-        if (isAuthorized) {
-          return <Component {...props} />
-        } else {
-          return <Redirect to={{
+      render={props => (
+        localStorage.getItem("auth")
+          ? <Component {...props} />
+          : <Redirect to={{
             pathname: "/",
             state: { from: props.location }
           }} />
-        }
-      }
-      }
+      )}
     />
   );
 }
