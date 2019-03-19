@@ -10,7 +10,7 @@ module.exports = function(app) {
        
         "SELECT subject, avg(size) * avg(psf) as est_sale "+
         "FROM sale_finds "+
-        "WHERE (year_diff in (SELECT MIN(year_diff) FROM sale_finds GROUP BY subject)) and WHERE bedrooms = comp_B "+
+        "WHERE (year_diff in (SELECT MIN(year_diff) FROM sale_finds GROUP BY subject)) and（bedrooms = comp_B）"+
         "GROUP BY subject "
 
   await db.sequelize.query(QUERY,{raw:false,type:db.sequelize.QueryTypes.SELECT}).then( data=> {
