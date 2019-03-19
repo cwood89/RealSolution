@@ -19,7 +19,7 @@ module.exports = function(app) {
                     for (i=0;i<data.length;i++){
                         db.rent_ests.create({
                             subject:data[i].subject,
-                            est_sale:data[i].est_sale,
+                            est_rent:data[i].est_rent,
                           })
                     }
                 }
