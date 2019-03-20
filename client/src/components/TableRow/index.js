@@ -23,6 +23,7 @@ function Row(props) {
 
   const modalId = `modalDisplay${props.data.subject}`
 
+  const compsLink = `/comps/${props.data.subject}`
   // let compRoute = `/api/comps/${  need data that goes here  }`
 
   // let url = "/comps/" + props.data.subject
@@ -46,7 +47,7 @@ function Row(props) {
             <div className="dropdown-menu ddButtons" id="dropdown-menu4" role="menu">
               <div className="dropdown-content" style={ddStyle}>
                 <div className="dropdown-item">
-                  <button className="button is-primary" style={buttonStyle}><a><Link to="/comps/">Comps</Link></a></button>
+                  <button className="button is-primary" style={buttonStyle}><a><Link to={compsLink}>Comps</Link></a></button>
                 </div>
                 <div className="dropdown-item">
                   <button className="button is-info" onClick={() => {
@@ -81,7 +82,7 @@ function Row(props) {
                 </ul>
               </section>
               <footer className="modal-card-foot">
-                <button className="button is-primary" style={buttonStyle}><Link to="/comps">Comps</Link></button>
+                <button className="button is-primary" style={buttonStyle}><Link to={compsLink}>Comps</Link></button>
                 <button className="button is-danger" style={buttonStyle}>Save</button>
               </footer>
             </div>

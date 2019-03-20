@@ -37,3 +37,23 @@ I will do Express Sessions
 One table for user settings
 
 * 
+
+User Settings:
+
+* User settings is for premium users.
+* Notification settings 
+
+Premium user button in user settings that leads to bingxi's google sheets thing in a new window.
+
+Property Settings:
+
+Search Radius
+
+Realtor Contact Info.
+
+
+
+
+
+
+
