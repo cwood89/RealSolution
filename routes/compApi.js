@@ -11,7 +11,12 @@ module.exports = function (app) {
       return data;
     });
 
-    let data = rentalComps.concat(saleComps)
+    //split this into rental and sale arrays, right now they are concatenated into one thing.
+
+    let data = [
+      {sale: saleComps},
+      {rent: rentalComps}
+    ]
     res.json(data)
   });
 };

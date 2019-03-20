@@ -8,21 +8,24 @@ class CompResults extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      sale: [],
+      rent: []
     }
     this.getResults = this.getResults.bind(this)
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log(this.props.match.params.id)
-    this.getResults()
+    await this.getResults()
   }
 
   async getResults() {
-    await API.findComps(6503611).then((data) => {
-      console.log(data.data)
+    await API.findComps(this.props.match.params.id).then((data) => {
+      console.log(data)
+      console.log(data.data[0].sale)
       this.setState({
-        data: data.data
+        sale: data.data[0].sale,
+        rent: data.data[1].rent
       })
     })
   }
@@ -39,17 +42,29 @@ class CompResults extends Component {
           </div>
         </section>
 
-
-        <Table>
-          {this.state.data.map((data) => {
-            return (
-              <CompRow
-                key={data.subject}
-                data={data} />
-            )
-          }
-          )}
-        </Table>
+ 
+         <Table>
+           <h1>Sale</h1>
+           {this.state.sale.map((data) => {
+             return (
+               <CompRow
+                 key={data.subject}
+                 data={data} />
+             )
+           }
+           )}
+         </Table>
+         <Table>
+           <h1>Rent</h1>
+           {this.state.rent.map((data) => {
+             return (
+               <CompRow
+                 key={data.subject}
+                 data={data} />
+             )
+           }
+           )}
+         </Table>
       </div>
     )
   }
