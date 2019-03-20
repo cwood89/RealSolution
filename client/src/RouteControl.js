@@ -22,7 +22,7 @@ function RouteControl() {
           <Route exact path="/signup" component={SignUp} />
           <PrivateRoute exact path="/otl" component={OTLresults} />
           <PrivateRoute exact path="/about" component={About} />
-          <PrivateRoute exact path="/comps/:id" component={CompResults} />
+          <PrivateRoute exact path="/comps/:id/:address/:city/:zip/:subdivision" component={CompResults} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </div>

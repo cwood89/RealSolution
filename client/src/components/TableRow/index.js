@@ -23,7 +23,7 @@ function Row(props) {
 
   const modalId = `modalDisplay${props.data.subject}`
 
-  const compsLink = `/comps/${props.data.subject}`
+  const compsLink = `/comps/${props.data.subject}/${props.data.Address}/${props.data.City}/${props.data.Zip}/${props.data.Sub}/`
   // let compRoute = `/api/comps/${  need data that goes here  }`
 
   // let url = "/comps/" + props.data.subject
