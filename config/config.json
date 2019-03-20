@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "c9T29w89",
+    "password": "Iphone7plus",
     "database": "atl_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "c9T29w89",
+    "password": "Iphone7plus",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",

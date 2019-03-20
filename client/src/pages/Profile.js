@@ -7,6 +7,12 @@ import Header from "../components/header";
 // import API from "../utils/API"
 import SavedProperties from "../components/SavedProperties"
 import API from "../utils/API";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link
+} from "react-router-dom";
 
 class Profile extends Component {
   constructor(props) {
@@ -17,6 +23,7 @@ class Profile extends Component {
   }
   componentDidMount() {
     this.getUser()
+    this.tabFunc('saved')
   }
   async getUser() {
     await API.getUser().then(async (data) => {
@@ -37,16 +44,32 @@ class Profile extends Component {
 
   userRender() {
     const element = (
-      <div>
-        <h1>user settings</h1>
-      </div>
+      <Router>
+        <div className="has-text-centered">
+        <h1>Customize your experience with RealSolution premium!</h1>
+        <br></br>
+        <h2>RealSolution Premium lets you:</h2>
+        <br></br>
+        <ul>
+          <li className="animated fadeInLeft"><p><i class="fas fa-2x fa-file-import"></i>    Import your own data and use RealSolution's tools for maximizing investment opportunities</p></li>
+          <br></br>
+          <li className="animated fadeInRight"><p><i class="fas  fa-2x fa-users-cog"></i>    Customize your user experience with notifications, Geofencing functions, and more.</p></li>
+          <br></br>
+          <li className="animated fadeInLeft"><p><i class="fas  fa-2x fa-plus-circle"></i>    Get access to new features first</p></li>
+          <br></br>
+          <li className="animated fadeInRight"><p><i class="far  fa-2x fa-thumbs-up"></i>    Realsolution premium is ad-free</p></li>
+        </ul>
+        <br></br>
+          <button className="button is-primary is-large animated pulse infinite"><a target="_blank" href="https://docs.google.com/spreadsheets/d/1viRr2fACZjM15TgyWl7brzmh-4rCh8Csvc6NdkaOAIs/edit#gid=0">Upgrade to Premium</a></button>
+        </div>
+      </Router>
     );
     ReactDOM.render(element, document.getElementById('settingTarget'));
   }
 
   propRender() {
     const element = (
-      <div>
+      <div className="has-text-centered">
         <h1>properties settings</h1>
         <p>Save a  Zip code:</p>
         <input type='text'></input>
@@ -55,7 +78,7 @@ class Profile extends Component {
     );
     ReactDOM.render(element, document.getElementById('settingTarget'));
   }
-  kevFunc(tab) {
+  tabFunc(tab) {
     if (tab === 'saved') {
       this.savedRender()
     } else if (tab === 'user') {
@@ -73,12 +96,12 @@ class Profile extends Component {
         <div className="tabs is-fullwidth">
           <ul>
             {/* Gonna make these simple routes for now which render the correct info.  */}
-            <li><a onClick={() => this.kevFunc('saved')} >Saved Properties</a></li>
-            <li><a onClick={() => this.kevFunc('user')} >User Settings</a></li>
-            <li><a onClick={() => this.kevFunc('properties')} >Property Settings</a></li>
+            <li><a onClick={() => this.tabFunc('saved')} >Saved Properties</a></li>
+            <li><a onClick={() => this.tabFunc('user')} >User Settings</a></li>
+            <li><a onClick={() => this.tabFunc('properties')} >Property Settings</a></li>
           </ul>
         </div>
-        <div id="settingTarget"></div>
+        <div id="settingTarget">stuff here</div>
       </div>
     )
   }
