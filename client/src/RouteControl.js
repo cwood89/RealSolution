@@ -22,8 +22,10 @@ function RouteControl() {
           <Route exact path="/signup" component={SignUp} />
           <PrivateRoute exact path="/otl" component={OTLresults} />
           <PrivateRoute exact path="/about" component={About} />
-          <PrivateRoute exact path="/comps/:id" component={CompResults} />
+          <PrivateRoute exact path="/comps/:id/:address/:city/:zip/:subdivision" component={CompResults} />
           <PrivateRoute exact path="/profile" component={Profile} />
+          <Route path='/upgrade' component={() => { window.location = 'https://docs.google.com/spreadsheets/d/1viRr2fACZjM15TgyWl7brzmh-4rCh8Csvc6NdkaOAIs/edit#gid=0'; return null;} }/>
+
         </Switch>
       </div>
     </Router>
