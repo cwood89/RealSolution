@@ -25,16 +25,13 @@ require("./sessions")(app)
 require("./routes/authRoutes")(app);
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);
-<<<<<<< HEAD
 require("./routes/newListingTable-api-routes")(app);
 require("./routes/rentalCompsTable-api-routes")(app);
 require("./routes/saleCompsTable-api-routes")(app);
 require("./routes/rentEstTable-api-routes")(app);
 require("./routes/saleEstTable-api-routes")(app);
 require("./routes/htmlRoutes")(app);
-=======
 require("./routes/compApi")(app);
->>>>>>> putTogether
 
 var syncOptions = { force: false };
 

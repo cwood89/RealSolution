@@ -7,7 +7,7 @@ module.exports = function (app) {
     // save a isting
   }),
 
-    // Read
+    // Readgit
     app.get("/api/favorites", (req, res) => {
       const { username } = req.body
       db.User.find({
