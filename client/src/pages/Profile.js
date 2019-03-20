@@ -6,22 +6,30 @@ import Header from "../components/header";
 // import Row from "../components/TableRow";
 // import API from "../utils/API"
 import SavedProperties from "../components/SavedProperties"
+import API from "../utils/API";
 
 class Profile extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      data: []
+      user: {}
     }
   }
-
-
+  componentDidMount() {
+    this.getUser()
+  }
+  async getUser() {
+    await API.getUser().then(async (data) => {
+      await this.setState({
+        user: data
+      })
+      console.log(this.state.user)
+    })
+  }
   savedRender() {
     const element = (
       <div>
-        <table>
-          <SavedProperties />
-        </table>
+        <SavedProperties id={this.state.user.id} />
       </div>
     );
     ReactDOM.render(element, document.getElementById('settingTarget'));
@@ -48,9 +56,9 @@ class Profile extends Component {
     ReactDOM.render(element, document.getElementById('settingTarget'));
   }
   kevFunc(tab) {
-    if(tab === 'saved') {
+    if (tab === 'saved') {
       this.savedRender()
-    } else if(tab === 'user') {
+    } else if (tab === 'user') {
       this.userRender()
     } else {
       this.propRender()
@@ -65,9 +73,9 @@ class Profile extends Component {
         <div className="tabs is-fullwidth">
           <ul>
             {/* Gonna make these simple routes for now which render the correct info.  */}
-            <li><a onClick={ () => this.kevFunc('saved') } >Saved Properties</a></li>
-            <li><a onClick={ () => this.kevFunc('user') } >User Settings</a></li>
-            <li><a onClick={ () => this.kevFunc('properties') } >Property Settings</a></li>
+            <li><a onClick={() => this.kevFunc('saved')} >Saved Properties</a></li>
+            <li><a onClick={() => this.kevFunc('user')} >User Settings</a></li>
+            <li><a onClick={() => this.kevFunc('properties')} >Property Settings</a></li>
           </ul>
         </div>
         <div id="settingTarget"></div>

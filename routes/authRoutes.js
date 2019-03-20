@@ -1,6 +1,9 @@
 var db = require("../models");
 
 module.exports = function (app) {
+  app.get("/api/user/:id", (req, res) => {
+
+  })
   app.post("/api/signup", (req, res) => {
     const { userId } = req.session;
     // grabbing sent data from sign-up form========
@@ -172,6 +175,5 @@ module.exports = function (app) {
       })
     }
   })
-
 
 }
