@@ -29,6 +29,7 @@ function Row(props) {
   // let url = "/comps/" + props.data.subject
   return (
     <Router>
+            <Switch>
       <tr className="thisRow">
         <td>{props.data.Address} <br></br> {props.data.City}, {props.data.Zip}</td>
         <td>{props.data.SQFT}</td>
@@ -89,11 +90,10 @@ function Row(props) {
           </div>
         </td>
         <td>
-          <Switch>
-            <Route exact path="/comps" render={() => <CompResults id={props.data.subject} />} />
-          </Switch>
+            <Route exact path={compsLink} render={() => <CompResults id={props.data.subject} />} />
         </td>
       </tr>
+          </Switch>
     </Router>
   )
 }

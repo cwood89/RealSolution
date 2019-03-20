@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../components/nav"
 import Table from "../components/ResultTable";
-import Row from "../components/TableRow";
+import CompRow from "../components/TableRow/compRow";
 import API from "../utils/API"
 
 class CompResults extends Component {
@@ -14,6 +14,7 @@ class CompResults extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.match.params.id)
     this.getResults()
   }
 
@@ -42,7 +43,7 @@ class CompResults extends Component {
         <Table>
           {this.state.data.map((data) => {
             return (
-              <Row
+              <CompRow
                 key={data.subject}
                 data={data} />
             )
