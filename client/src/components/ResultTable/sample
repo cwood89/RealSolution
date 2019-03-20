@@ -1,0 +1,17 @@
+data-id={{subject}}>
+FMLS: {{subject}}</p>
+Address: {{Address}}</p>
+Sub: {{Sub}}</p>
+City: {{City}}</p>
+Zip: {{Zip}}</p>
+SQFT: {{SQFT}}</p>
+Bedrooms: {{B}}</p>
+Bathrooms: {{B_F}}/{{B_H}}</p>
+Build: {{Y}}</p>
+
+List Price: ${{Price}}</p>
+Est offer: {{otl}}%</p>
+Est Rental: ${{est_rent}}</p>
+Est Sale: ${{est_sale}}</p>
+Comps indicator: ${{comp_rental}} / ${{comp_sale}}</p>
+button data-id={{subject}}>Find Comps

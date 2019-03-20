@@ -1,35 +1,40 @@
 require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
-
-var db = require("./models");
-
-var app = express();
-var PORT = process.env.PORT || 3000;
+const express = require("express");
+const path = require("path");
+const app = express();
+const logger = require("morgan");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const db = require("./models");
+const PORT = process.env.PORT || 3002;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(logger("dev"));
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(cookieParser());
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"))
+};
 
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
+// importing sessions
+require("./sessions")(app)
 
 // Routes
+require("./routes/authRoutes")(app);
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);
+<<<<<<< HEAD
 require("./routes/newListingTable-api-routes")(app);
 require("./routes/rentalCompsTable-api-routes")(app);
 require("./routes/saleCompsTable-api-routes")(app);
 require("./routes/rentEstTable-api-routes")(app);
 require("./routes/saleEstTable-api-routes")(app);
 require("./routes/htmlRoutes")(app);
+=======
+require("./routes/compApi")(app);
+>>>>>>> putTogether
 
 var syncOptions = { force: false };
 
@@ -38,10 +43,14 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = false;
 }
+// Sending React to Client=====================
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"))
+});
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
@@ -51,3 +60,4 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 module.exports = app;
+
