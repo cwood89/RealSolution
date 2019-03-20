@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export default {
-
+  listFavorites(user) {
+    return axios.get("api/favorites/" + user);
+  },
   listOTL() {
     return axios.get("/api/subject_otlists");
   },

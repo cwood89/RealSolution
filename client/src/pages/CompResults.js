@@ -17,8 +17,8 @@ class CompResults extends Component {
     this.getResults()
   }
 
-  getResults() {
-    API.findComps(this.props.match.params.id).then((data) => {
+  async getResults() {
+    await API.findComps(6503611).then((data) => {
       console.log(data.data)
       this.setState({
         data: data.data
@@ -52,6 +52,7 @@ class CompResults extends Component {
       </div>
     )
   }
+
 
 }
 export default CompResults;
