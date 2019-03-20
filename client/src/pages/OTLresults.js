@@ -45,13 +45,13 @@ class OTLresults extends Component {
     await this.setStateAsync({ load: false })
   }
   // ================================================================
-  async componentDidMount() {
-    await this.getResults()
+  componentDidMount() {
+    this.getResults()
     this.noDuplicateTowns()
   }
 
-  getResults() {
-    API.listOTL().then((data) => {
+  async getResults() {
+    await API.listOTL().then((data) => {
       this.setState({
         data: data.data,
         origData: data.data

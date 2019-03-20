@@ -41,5 +41,13 @@ module.exports = function (sequelize, DataTypes) {
       return res;
     });
   }
+  User.associate = (models) => {
+    User.belongsToMany(models.subject_otlists, {
+      through: "UserFavorites",
+      as: "favorites",
+      foriegnKey: "userId",
+      constraints: false
+    })
+  }
   return User;
 };
