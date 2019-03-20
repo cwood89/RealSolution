@@ -12,7 +12,7 @@ class SavedProperties extends Component {
     this.getSaved();
   }
   async getSaved() {
-    await API.listFavorites(this.props.id).then((data) => {
+    await API.saveFavorite(this.props.id).then((data) => {
       this.setState({ data: data })
     })
   }

@@ -2,25 +2,28 @@ import React from "react";
 
 function Row(props) {
 
-  let ddStyle = {
-    position: 'relative',
-    bottom: '85px',
-    zIndex: '1000'
-  }
+  // let ddStyle = {
+  //   position: 'relative',
+  //   bottom: '85px',
+  //   zIndex: '1000'
+  // }
   console.log(props.data)
-  return (
-    <tr className="thisRow">
-      <td>{props.data.Address} {props.data.Sub} <br></br> {props.data.City}, {props.data.Zip}</td>
-      <td>{props.data.SQFT}</td>
-      <td>{props.data.B}</td>
-      <td>{props.data.B_F}/{props.data.B_H}</td>
-      <td>{props.data.Y}</td>
-      <td>${props.data.Price}</td>
-      <td>{props.data.otl}%</td>
-      <td className="dropdown-trigger">${props.data.comp_rental} / ${props.data.comp_sale}</td>
-    </tr>
+  props.data.map((data) => {
+    return (
+      <tr className="thisRow">
+        <td>{data.Address} {data.Sub} <br></br> {data.City}, {data.Zip}</td>
+        <td>{data.SQFT}</td>
+        <td>{data.B}</td>
+        <td>{data.B_F}/{data.B_H}</td>
+        <td>{data.Y}</td>
+        <td>${data.Price}</td>
+        <td>{data.otl}%</td>
+        <td className="dropdown-trigger">${data.comp_rental} / ${data.comp_sale}</td>
+      </tr>
 
-  )
+    )
+  })
 }
+
 
 export default Row;

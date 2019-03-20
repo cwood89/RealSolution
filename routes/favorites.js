@@ -4,7 +4,11 @@ module.exports = function (app) {
 
   // Create
   app.post("/api/favorites", (req, res) => {
-    // save a isting
+    const { body } = req;
+    const { user,
+      id
+    }
+    db.User.addSubject_otlists(req.params.id)
   }),
 
     // Read
