@@ -29,28 +29,32 @@ const rentalcompDrop = (req,res,next) =>{
 
 //drop sale comps
 const salecompDrop = (req,res,next) =>{
-     db.sale_finds.destroy({where:{}}).then(next)
+     db.sale_finds.destroy({where:{}});
+     next();
 }
 
 //drop rent estimation
 const rentEstDrop = async (req,res,next) =>{
-     db.rent_ests.destroy({where:{}}).then(next)
+     db.rent_ests.destroy({where:{}});
+     next();
 }
 
 //drop sale estimation 
 const saleEstDrop = async (req,res,next) =>{
-     db.sale_ests.destroy({where:{}}).then(next)
+     db.sale_ests.destroy({where:{}});
+     next();
 }
 
 //drop the customer Listing output
-
 const customerFindsDrop = (req,res,next) =>{
-    db.customerFinds.destroy({where:{}}).then(next)
+    db.customerFinds.destroy({where:{}});
+    next();
 }
 
 //drop all the customerOtl first
 const customerOtlDrop = (req,res,next) =>{
-    db.customerOtlists.destroy({where:{}}).then(next)
+    db.customerOtlists.destroy({where:{}});
+    next();
 }
 
 
