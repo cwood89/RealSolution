@@ -24,7 +24,7 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);
-require("./routes/newListingTable-api-routes")(app);
+//require("./routes/newListingTable-api-routes")(app);
 require("./routes/subjectWithComps-api-routes")(app);
 require("./routes/rentalCompsTable-api-routes")(app);
 require("./routes/saleCompsTable-api-routes")(app);
