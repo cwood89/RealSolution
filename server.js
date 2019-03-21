@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === "production") {
 require("./sessions")(app)
 
 // Routes
+require("./routes/favoriteRoutes")(app);
 require("./routes/authRoutes")(app);
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);

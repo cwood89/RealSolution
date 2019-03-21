@@ -23,20 +23,19 @@ class Profile extends Component {
   }
   componentDidMount() {
     this.getUser()
-    this.tabFunc('saved')
   }
   async getUser() {
-    await API.getUser().then(async (data) => {
-      await this.setState({
-        user: data
-      })
-      console.log(this.state.user)
+    await this.setState({
+      user: localStorage.getItem("auth")
     })
+    this.tabFunc('saved')
   }
+
   savedRender() {
+
     const element = (
       <div>
-        <SavedProperties id={this.state.user.id} />
+        <SavedProperties id={this.state.user} />
       </div>
     );
     ReactDOM.render(element, document.getElementById('settingTarget'));
@@ -46,20 +45,20 @@ class Profile extends Component {
     const element = (
       <Router>
         <div className="has-text-centered">
-        <h1>Customize your experience with RealSolution premium!</h1>
-        <br></br>
-        <h2>RealSolution Premium lets you:</h2>
-        <br></br>
-        <ul>
-          <li className="animated fadeInLeft"><p><i class="fas fa-2x fa-file-import"></i>    Import your own data and use RealSolution's tools for maximizing investment opportunities</p></li>
+          <h1>Customize your experience with RealSolution premium!</h1>
           <br></br>
-          <li className="animated fadeInRight"><p><i class="fas  fa-2x fa-users-cog"></i>    Customize your user experience with notifications, Geofencing functions, and more.</p></li>
+          <h2>RealSolution Premium lets you:</h2>
           <br></br>
-          <li className="animated fadeInLeft"><p><i class="fas  fa-2x fa-plus-circle"></i>    Get access to new features first</p></li>
+          <ul>
+            <li className="animated fadeInLeft"><p><i class="fas fa-2x fa-file-import"></i>    Import your own data and use RealSolution's tools for maximizing investment opportunities</p></li>
+            <br></br>
+            <li className="animated fadeInRight"><p><i class="fas  fa-2x fa-users-cog"></i>    Customize your user experience with notifications, Geofencing functions, and more.</p></li>
+            <br></br>
+            <li className="animated fadeInLeft"><p><i class="fas  fa-2x fa-plus-circle"></i>    Get access to new features first</p></li>
+            <br></br>
+            <li className="animated fadeInRight"><p><i class="far  fa-2x fa-thumbs-up"></i>    Realsolution premium is ad-free</p></li>
+          </ul>
           <br></br>
-          <li className="animated fadeInRight"><p><i class="far  fa-2x fa-thumbs-up"></i>    Realsolution premium is ad-free</p></li>
-        </ul>
-        <br></br>
           <button className="button is-primary is-large animated pulse infinite"><a target="_blank" href="https://docs.google.com/spreadsheets/d/1viRr2fACZjM15TgyWl7brzmh-4rCh8Csvc6NdkaOAIs/edit#gid=0">Upgrade to Premium</a></button>
         </div>
       </Router>
