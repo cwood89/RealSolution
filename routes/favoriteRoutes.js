@@ -38,7 +38,7 @@ module.exports = function (app) {
     // Read
     app.get("/api/favorites/:id", (req, res) => {
       const user = req.params.id
-      db.user.find({
+      db.user.findAll({
         include: [{
           model: db.subject_otlists,
           as: "favorites",
