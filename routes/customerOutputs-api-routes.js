@@ -22,25 +22,22 @@ const customerListingsDrop = (req,res,next) =>{
 
 //drop rental comps 
 const rentalcompDrop = (req,res,next) =>{
-    await db.rent_finds.destroy({where:{}});
-    next();
+    db.rent_finds.destroy({where:{}}).then(next)
 }
 
 //drop sale comps
 const salecompDrop = (req,res,next) =>{
-    await db.sale_finds.destroy({where:{}});
-    next();
+     db.sale_finds.destroy({where:{}}).then(next)
 }
 
 //drop rent estimation
 const rentEstDrop = async (req,res,next) =>{
-    await db.rent_ests.destroy({where:{}})
-    next()
+     db.rent_ests.destroy({where:{}}).then(next)
 }
 
 //drop sale estimation 
 const saleEstDrop = async (req,res,next) =>{
-    await db.sale_ests.destroy({where:{}}).then(next)
+     db.sale_ests.destroy({where:{}}).then(next)
 }
 
 //drop the customer Listing output
