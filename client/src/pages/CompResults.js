@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../components/nav"
-import Table from "../components/ResultTable";
+import CompTable from "../components/ResultTable/compTable";
 import CompRow from "../components/TableRow/compRow";
 import API from "../utils/API"
 
@@ -9,7 +9,7 @@ class CompResults extends Component {
     super(props)
     this.state = {
       sale: [],
-      rent: []
+      rent: [],
     }
     this.getResults = this.getResults.bind(this)
   }
@@ -22,12 +22,14 @@ class CompResults extends Component {
   async getResults() {
     await API.findComps(this.props.match.params.id).then((data) => {
       console.log(data)
-      console.log(data.data[0].sale)
+      console.log(data.data.rent)
       this.setState({
-        sale: data.data[0].sale,
-        rent: data.data[1].rent
+        sale: data.data.sale,
+        rent: data.data.rent
       })
     })
+
+    await API.getResults()
   }
 
   render() {
@@ -37,14 +39,19 @@ class CompResults extends Component {
         <section className="hero">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title">Comps</h1>
+            <p>Comps for</p>
+              <h1 className="title">{this.props.match.params.address}, {this.props.match.params.city}, GA, {this.props.match.params.zip}</h1>
+              <p>Subdivision: {this.props.match.params.subdivision}</p>
             </div>
           </div>
         </section>
 
- 
-         <Table>
-           <h1>Sale</h1>
+
+        <div className="compsHolder" style={{display: 'flex'}}>
+            <div className="container is-half">
+              <h1 className="title">Sale</h1>
+     
+         <CompTable>
            {this.state.sale.map((data) => {
              return (
                <CompRow
@@ -53,9 +60,13 @@ class CompResults extends Component {
              )
            }
            )}
-         </Table>
-         <Table>
-           <h1>Rent</h1>
+           </CompTable>
+
+           </div>
+           <div className="container is-half">
+              <h1 className="title">Rental</h1>
+
+         <CompTable>
            {this.state.rent.map((data) => {
              return (
                <CompRow
@@ -64,7 +75,10 @@ class CompResults extends Component {
              )
            }
            )}
-         </Table>
+         </CompTable>
+
+         </div>
+         </div>
       </div>
     )
   }

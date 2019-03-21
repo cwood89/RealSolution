@@ -2,7 +2,10 @@ import axios from "axios";
 
 export default {
   listFavorites(user) {
-    return axios.get("api/favorites/" + user);
+    return axios.get("/api/favorites/" + user);
+  },
+  saveFavorite(user) {
+    return axios.post("/api/favorites/", user);
   },
   listOTL() {
     return axios.get("/api/subject_otlists");
@@ -48,13 +51,13 @@ export default {
       if (res.data.success === false) {
         return;
       } else {
-        localStorage.setItem("auth", res.data.message)
+        localStorage.setItem("auth", res.data.message.session)
       }
     })
   },
 
   logOut(cb) {
-    return axios.get("api/logout")
+    return axios.get("/api/logout")
       .then((res) => {
         if (res.data.success === false) {
           alert(res.data.message)
@@ -67,4 +70,10 @@ export default {
 
       })
   },
+
+  getUser() {
+    let user = localStorage.getItem("auth")
+    return user;
+  }
+
 };

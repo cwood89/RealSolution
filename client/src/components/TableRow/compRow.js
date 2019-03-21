@@ -29,12 +29,12 @@ function CompRow(props) {
   // let url = "/comps/" + props.data.subject
   return (
       <tr className="thisRow">
-        <td>address: {props.data.comp_address}</td>
-        <td>sqft: {props.data.comp_size}</td>
-        <td>bedrooms: {props.data.comp_B}</td>
-        <td>year built: {props.data.comp_year}</td>
-        <td>per square foot: {props.data.psf}</td>
-        <td>FMLS: {props.data.comp_fmls}</td>
+        <td>{props.data.comp_address}</td>
+        <td>{props.data.comp_size}</td>
+        <td>{props.data.comp_B}</td>
+        <td>{props.data.comp_year}</td>
+        <td>${props.data.psf}</td>
+        <td>{props.data.comp_fmls}</td>
 
       </tr>
   )
