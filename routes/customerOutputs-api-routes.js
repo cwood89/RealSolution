@@ -1,5 +1,5 @@
 var db = require("../models");
-
+const otl = require("../function/OTL.js");
 var admin = require("firebase-admin");
 
 // Fetch the service account key JSON file contents
