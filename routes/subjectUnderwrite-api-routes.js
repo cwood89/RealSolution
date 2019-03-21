@@ -13,6 +13,7 @@ module.exports = function(app) {
                 "JOIN sale_ests on customerListings.FMLS = sale_ests.subject;"
 
   await db.sequelize.query(QUERY,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
+                
                 if(data){
                     for (i=0;i<data.length;i++){
                         db.subject_finds.create({

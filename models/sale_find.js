@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     comp_size:DataTypes.INTEGER,
     comp_year:DataTypes.INTEGER,
     market_value:DataTypes.INTEGER,
-    psf:DataTypes.INTEGER,
+    psf:DataTypes.DECIMAL(10,4),
     size_diff:DataTypes.INTEGER,
     year_diff:DataTypes.INTEGER,
     comp_DOM:DataTypes.INTEGER,
