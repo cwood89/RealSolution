@@ -17,12 +17,14 @@ var ref = dbfirebase.ref("newListing");
 
 //drop all the records first
 const customerListingsDrop = (req,res,next) =>{
-    db.customerListings.destroy({where:{}}).then(next)    
+    db.customerListings.destroy({where:{}});
+    next()  
 }
 
 //drop rental comps 
 const rentalcompDrop = (req,res,next) =>{
-    db.rent_finds.destroy({where:{}}).then(next)
+    db.rent_finds.destroy({where:{}});
+    next();
 }
 
 //drop sale comps
