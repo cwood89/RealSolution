@@ -114,7 +114,7 @@ module.exports = function(app) {
    await db.sequelize.query(QUERY1,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {     
                if(data){
                   for (i=0;i<data.length;i++){
-                db.rent_finds.create({
+                   db.rent_finds.create({
                 subject:data[i].subject,
                 subject_sub:data[i].subject_sub,
                 bedrooms:data[i].bedrooms,
@@ -189,7 +189,7 @@ module.exports = function(app) {
    await db.sequelize.query(QUERY5,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {
                 if(data){
                     for (i=0;i<data.length;i++){
-                        db.customerOutputs.create({
+                         db.customerFinds.create({
                             FMLS:data[i].FMLS,
                             Address: data[i].Address,
                             City:data[i].City,
