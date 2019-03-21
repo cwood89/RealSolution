@@ -37,17 +37,18 @@ module.exports = function (app) {
 
     // Read
     app.get("/api/favorites/:id", (req, res) => {
-      const user = req.params.id
+      const userId = req.params.id
       db.user.findAll({
+        where: { id: userId },
         include: [{
           model: db.subject_otlists,
           as: "favorites",
-        }],
-        where: user
+        }]
+
       }).then(user => {
         console.log("USER++++++++++++++++++++")
         console.log(user)
-        console; log("===========================")
+        console.log("===========================")
         res.json(user)
       })
     }),

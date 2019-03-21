@@ -7,24 +7,21 @@ function Row(props) {
   //   bottom: '85px',
   //   zIndex: '1000'
   // }
-  console.log("favorites row===================")
-  console.log(props.data)
-  console.log("============================")
-  props.data.map((data) => {
-    return (
-      <tr className="thisRow">
-        <td>{data.Address} {data.Sub} <br></br> {data.City}, {data.Zip}</td>
-        <td>{data.SQFT}</td>
-        <td>{data.B}</td>
-        <td>{data.B_F}/{data.B_H}</td>
-        <td>{data.Y}</td>
-        <td>${data.Price}</td>
-        <td>{data.otl}%</td>
-        <td className="dropdown-trigger">${data.comp_rental} / ${data.comp_sale}</td>
-      </tr>
 
-    )
-  })
+  let favorites = props.favorites
+  return (
+    <tr className="thisRow">
+      <td>{favorites.Address} {favorites.Sub} <br></br> {favorites.City}, {favorites.Zip}</td>
+      <td>{favorites.SQFT}</td>
+      <td>{favorites.B}</td>
+      <td>{favorites.B_F}/{favorites.B_H}</td>
+      <td>{favorites.Y}</td>
+      <td>${favorites.Price}</td>
+      <td>{favorites.otl}%</td>
+      <td className="dropdown-trigger">${favorites.comp_rental} / ${favorites.comp_sale}</td>
+    </tr>
+
+  )
 }
 
 

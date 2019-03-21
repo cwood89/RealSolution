@@ -18,9 +18,6 @@ class SavedProperties extends Component {
     })
   }
   render() {
-    console.log("property render=======================")
-    console.log(this.state.data)
-    console.log("+==================================")
     return (
       this.state.data.length < 1
         ? (<h1>You don't have any saved listings!</h1>)
@@ -38,7 +35,11 @@ class SavedProperties extends Component {
                 <th><abbr title="Comps Indicator">Comparables</abbr></th>
               </tr>
             </thead>
-            <Favorites data={this.state.data} />
+            {this.state.data.data[0].favorites.map((favorites) => {
+              return (
+                <Favorites favorites={favorites} />
+              )
+            })}
             < tfoot >
               <tr>
                 <th><abbr title="Address">ADR</abbr></th>
