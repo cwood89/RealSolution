@@ -2,10 +2,10 @@ import axios from "axios";
 
 export default {
   listFavorites(user) {
-    return axios.get("api/favorites/" + user);
+    return axios.get("/api/favorites/" + user);
   },
   saveFavorite(user) {
-    return axios.post("api/favorites/" + user);
+    return axios.post("/api/favorites/", user);
   },
   listOTL() {
     return axios.get("/api/subject_otlists");
@@ -57,7 +57,7 @@ export default {
   },
 
   logOut(cb) {
-    return axios.get("api/logout")
+    return axios.get("/api/logout")
       .then((res) => {
         if (res.data.success === false) {
           alert(res.data.message)
@@ -73,8 +73,7 @@ export default {
 
   getUser() {
     let user = localStorage.getItem("auth")
-    console.log(user)
-    return axios.get("api/user/" + user);
+    return user;
   }
 
 };

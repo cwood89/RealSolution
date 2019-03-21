@@ -7,7 +7,9 @@ function Row(props) {
   //   bottom: '85px',
   //   zIndex: '1000'
   // }
+  console.log("favorites row===================")
   console.log(props.data)
+  console.log("============================")
   props.data.map((data) => {
     return (
       <tr className="thisRow">

@@ -56,7 +56,10 @@ function Row(props) {
               </div>
               <div className="dropdown-item">
                 <button className="button is-danger" onClick={() => {
-                  let user = localStorage.getItem("auth");
+                  let user = {
+                    user: localStorage.getItem("auth"),
+                    listId: props.data.subject
+                  }
                   API.saveFavorite(user).then(() => {
                     // need to render already saved button
                     alert("saved")

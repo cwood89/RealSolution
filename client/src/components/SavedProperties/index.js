@@ -12,11 +12,14 @@ class SavedProperties extends Component {
     this.getSaved();
   }
   async getSaved() {
-    await API.saveFavorite(this.props.id).then((data) => {
-      this.setState({ data: data })
+    await API.listFavorites(this.props.id).then(async (data) => {
+      await this.setState({ data: data })
     })
   }
   render() {
+    console.log("property render=======================")
+    console.log(this.state.data)
+    console.log("+==================================")
     return (
       <table className="table is-narrow is-hoverable">
         <thead>
