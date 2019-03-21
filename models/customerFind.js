@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var customerFinds = sequelize.define("customerFinds", {
     FMLS:{
       type:DataTypes.STRING,
+      primaryKey:true
     },
     Address: DataTypes.STRING,
     City:DataTypes.STRING,
@@ -18,10 +19,6 @@ module.exports = function(sequelize, DataTypes) {
     DOM:DataTypes.INTEGER,
     est_rent:DataTypes.INTEGER,
     est_sale:DataTypes.INTEGER,
-    id: {
-      type:DataTypes.INTEGER,
-      primaryKey:true
-    },
     createdAt:DataTypes.DATE,
     updatedAt:DataTypes.DATE
   });
