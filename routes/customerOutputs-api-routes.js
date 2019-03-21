@@ -205,7 +205,7 @@ module.exports = function(app) {
                             F:data[i].F,
                             DOM:data[i].DOM,
                             est_rent:data[i].est_rent,
-                            est_sale:data[i].est_rent
+                            est_sale:data[i].est_sale
                           })
                     }
                 }
