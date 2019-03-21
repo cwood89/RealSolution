@@ -114,7 +114,7 @@ module.exports = function(app) {
    await db.sequelize.query(QUERY1,{raw:false, type:db.sequelize.QueryTypes.SELECT}).then( data=> {     
                if(data){
                   for (i=0;i<data.length;i++){
-            db.rent_finds.create({
+                db.rent_finds.create({
                 subject:data[i].subject,
                 subject_sub:data[i].subject_sub,
                 bedrooms:data[i].bedrooms,
@@ -130,7 +130,7 @@ module.exports = function(app) {
                 size_diff:data[i].size_diff,
                 year_diff:data[i].year_diff,
                 comp_DOM: data[i].comp_DOM
-              })
+                  })
                   }
                  }
         })
@@ -240,7 +240,7 @@ module.exports = function(app) {
             }
           })
 
-    db.customerOtlists.findAll({
+   await db.customerOtlists.findAll({
             order:[['otl','DESC']]
            }).then(function(data){
                  res.send(data)
