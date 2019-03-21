@@ -1,12 +1,12 @@
 var db = require("../models");
 
-const rentalcompDrop = (req,res,next) =>{
+const salecompDrop = (req,res,next) =>{
     db.sale_finds.destroy({where:{}});
     next();
 }
 
 module.exports = function(app) {
-    app.get("/api/saleComps",rentalcompDrop,async function(req, res) {
+    app.get("/api/saleComps",salecompDrop,async function(req, res) {
     var QUERY = "SELECT customerListings.FMLS AS subject, customerListings.sub as subject_sub, customerListings.B as bedrooms, customerListings.SQFT as size, customerListings.Y as year_build, sales.FMLS as comp_fmls, sales.Address as comp_address, sales.B as comp_B, sales.sqft as comp_size,sales.Y as comp_year ,sales.price as market_value, round(sales.price/sales.sqft,2) as psf, abs(sales.sqft - customerListings.sqft) as size_diff, abs(sales.Y - customerListings.Y) as year_diff, sales.Dom as comp_DOM"+
                 " FROM customerListings" +
                 " join sales on ( upper(sales.sub) LIKE CONCAT('%', upper(customerListings.sub), '%') or upper(customerListings.sub) LIKE CONCAT('%', upper(sales.sub), '%') )and customerListings.zip = sales.zip"+

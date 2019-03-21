@@ -25,12 +25,15 @@ app.set("view engine", "handlebars");
 require("./routes/otlSetup")(app)
 require("./routes/subject-summary-api-routes")(app);
 require("./routes/newListingTable-api-routes")(app);
+require("./routes/subjectWithComps-api-routes")(app);
 require("./routes/rentalCompsTable-api-routes")(app);
 require("./routes/saleCompsTable-api-routes")(app);
 require("./routes/rentEstTable-api-routes")(app);
 require("./routes/saleEstTable-api-routes")(app);
 require("./routes/htmlRoutes")(app);
-require("./routes/subjectWithComps-api-routes")(app);
+
+//this one is really the one you going to need
+require("./routes/customerOutputs-api-routes")(app);
 
 var syncOptions = { force: false };
 

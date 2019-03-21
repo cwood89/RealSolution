@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var subject_finds = sequelize.define("subject_finds", {
+  var customerFinds = sequelize.define("customerFinds", {
     FMLS:{
       type:DataTypes.STRING,
     },
@@ -26,5 +26,5 @@ module.exports = function(sequelize, DataTypes) {
     updatedAt:DataTypes.DATE
   });
   
-  return subject_finds;
+  return customerFinds;
 };
