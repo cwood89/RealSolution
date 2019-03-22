@@ -30,10 +30,10 @@ function Nav() {
             <a href="/about" className="dropdown-item is-active animated zoomInRight">
               About
       </a>
-            <a href="/settings" className="dropdown-item is-active animated zoomInRight">
+            {/* <a href="/settings" className="dropdown-item is-active animated zoomInRight">
               Settings
         {/* When this button is clicked, it should go to the Profile page and the settings pane should open automatically */}
-            </a>
+            {/* </a> */}
             <a className="dropdown-item is-active animated zoomInRight" onClick={() => {
               API.logOut(() => {
                 history.push("/")

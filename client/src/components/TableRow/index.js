@@ -62,7 +62,8 @@ function Row(props) {
                   }
                   API.saveFavorite(user).then(() => {
                     // need to render already saved button
-                    alert("saved")
+                    // alert("saved")
+                    props.saveSnack()
                   })
                 }} >Save</button>
               </div>
@@ -92,7 +93,16 @@ function Row(props) {
             </section>
             <footer className="modal-card-foot">
               <button className="button is-primary" style={buttonStyle}><Link to={compsLink}>Comps</Link></button>
-              <button className="button is-danger" style={buttonStyle}>Save</button>
+              <button className="button is-danger" style={buttonStyle} onClick={() => {
+                  let user = {
+                    user: localStorage.getItem("auth"),
+                    listId: props.data.subject
+                  }
+                  API.saveFavorite(user).then(() => {
+                    // need to render already saved button
+                    props.saveSnack()
+                  })
+                }}>Save</button>
             </footer>
           </div>
         </div>

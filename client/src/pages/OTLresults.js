@@ -181,6 +181,21 @@ class OTLresults extends Component {
     }
   }
 
+
+  saveSnack(){
+     // Get the snackbar DIV
+  var snackSave = document.getElementById("snackBar");
+
+  // Add the "show" class to DIV
+  snackSave.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ snackSave.className = snackSave.className.replace("show", ""); }, 3000);
+  }
+
+
+
+
   render() {
     return (
       <div>
@@ -208,12 +223,15 @@ class OTLresults extends Component {
                 <Row
                   key={data.subject}
                   data={data}
-                  modal={this.displayModal} />
+                  modal={this.displayModal}
+                  saveSnack={this.saveSnack} />
               )
             }
             )}
           </Table>
           <div id="modalTarget"></div>
+          <div id='snackBar'>Property Saved!</div>
+          <img src="https://www.placehold.it/200x400" alt="fake ad"/>
         </div>
       </div>
     )

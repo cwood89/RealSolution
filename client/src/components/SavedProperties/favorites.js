@@ -11,7 +11,7 @@ function Row(props) {
   let favorites = props.favorites
   return (
     <tr className="thisRow">
-      <td>{favorites.Address} {favorites.Sub} <br></br> {favorites.City}, {favorites.Zip}</td>
+      <td>{favorites.Address} <br></br> {favorites.City}, GA {favorites.Zip}</td>
       <td>{favorites.SQFT}</td>
       <td>{favorites.B}</td>
       <td>{favorites.B_F}/{favorites.B_H}</td>
