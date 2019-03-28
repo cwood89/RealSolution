@@ -18,6 +18,8 @@ module.exports = function(sequelize, DataTypes) {
     DOM:DataTypes.INTEGER,
     est_rent:DataTypes.INTEGER,
     est_sale:DataTypes.INTEGER,
+    comp_rental:DataTypes.INTEGER,
+    comp_sale:DataTypes.INTEGER,
     id: {
       type:DataTypes.INTEGER,
       primaryKey:true

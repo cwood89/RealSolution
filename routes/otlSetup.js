@@ -17,7 +17,6 @@ const otlTable = async (req, res, next) => {
       var rent = Math.max(data[i].est_rent, data[i].comp_rental);
       var marketValue = Math.max(data[i].est_sale, data[i].comp_sale)
       var rehab = 9000
-
       //tax function can go here
 
       db.subject_otlists.create({
