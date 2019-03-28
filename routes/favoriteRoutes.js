@@ -13,14 +13,7 @@ module.exports = function (app) {
         id: user
       }
     }).then((user) => {
-      console.log("listId++++++++++++++++++++++++++")
-      console.log(listId)
-      console.log("+++++++++++++++++++++++++++")
-
       db.subject_otlists.findOne({ where: { subject: listId } }).then((listing) => {
-        console.log("listing++++++++++++++++++++++++++")
-        console.log(listing)
-        console.log("+++++++++++++++++++++++++++")
         user.addFavorite(listing)
       })
       res.send({
@@ -46,9 +39,6 @@ module.exports = function (app) {
         }]
 
       }).then(user => {
-        console.log("USER++++++++++++++++++++")
-        console.log(user)
-        console.log("===========================")
         res.json(user)
       })
     }),
@@ -60,6 +50,6 @@ module.exports = function (app) {
 
     // Delete
     app.delete("api/favorites/:id", (req, res) => {
-      // delete listing
+      db.UserFavorites.destroy({ where: { exerciseId: 1856, } })
     })
 }
