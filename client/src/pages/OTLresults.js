@@ -23,7 +23,6 @@ class OTLresults extends Component {
       sqftMax: ''
     }
     this.getResults = this.getResults.bind(this)
-    this.noDuplicateTowns = this.noDuplicateTowns.bind(this)
     this.minOfferFunc = this.minOfferFunc.bind(this)
     this.maxOfferFunc = this.maxOfferFunc.bind(this)
     this.minPriceFunc = this.minPriceFunc.bind(this)
@@ -45,10 +44,11 @@ class OTLresults extends Component {
     await this.setStateAsync({ load: false })
   }
   // ================================================================
-  componentDidMount() {
+  componentWillMount() {
     this.getResults()
-    this.noDuplicateTowns()
+    
   }
+
 
   async getResults() {
     await API.listOTL().then((data) => {
@@ -76,38 +76,6 @@ class OTLresults extends Component {
       , document.getElementById("modalTarget"));
   }
 
-
-  async noDuplicateTowns() {
-    // let allTownNames = []
-    // let noDuplicateTownNames = []
-
-    // function getTowns(array) {
-    // return new Promise((resolve, reject) => {
-    //     setTimeout(() => {
-    //       array.forEach((data) => {
-    //        //take the data from the database and put it into a local array.
-    //        allTownNames.push(data.City)
-    //        alert(allTownNames)
-    //         resolve()
-    //       if (allTownNames.length !== 0) {
-    //         resolve()
-    //       } else {
-    //         reject('error: something went wrong')
-    //       }
-    //      })
-    //    }, 2000)
-    //   })}
-
-    //   getTowns(this.state.data)
-
-    //    getTowns(this.state.data).then(() => {
-    //   noDuplicateTownNames = [...new Set(allTownNames)]
-    // }
-    // ).then(() => {
-    //   noDuplicateTownNames = noDuplicateTownNames.sort()
-    // }
-    // ).then(() => alert(noDuplicateTownNames))
-  }
 
   minOfferFunc(event) {
     //update the state with the new value
@@ -149,14 +117,49 @@ class OTLresults extends Component {
 
 
   filterResults(parameter) {
+    let listings = this.state.data
+    let maxOffer = listings[0].otl
+    let minOffer = listings[listings.length - 1].otl
+
+    function getPrices(){
+      return listings.map(listing => listing.Price);
+    }
+    let minPrice = function getMinPrice(){
+      return Math.min(...getPrices());
+    }
+    let maxPrice = function getMaxPrice(){
+      return Math.max(...getPrices());
+    }
+
+    function getSqft(){
+      return listings.map(listing => listing.SQFT);
+    }
+    let minSqft = function getMinSqft(){
+      return Math.min(...getSqft());
+    }
+    let maxSqft = function getMaxSqft(){
+      return Math.max(...getSqft());
+    }
+
+    console.log('minPrice ' + minPrice())
+    console.log('maxPrice ' + maxPrice())
+    console.log('minSqft ' + minSqft())
+    console.log('maxSqft ' + maxSqft())
+
+
+
+    console.log('maxOffer' + maxOffer) 
+    console.log('minOffer' + minOffer) 
+
+
     if (parameter === "offer") {
       // alert(this.state.offMin)
       // alert(this.state.offMax)
-      // console.log(this.state.origData)
 
       //take this.state.data and filter it according to the parameters set in state
       let newResult = this.state.data.filter((data) => data.otl >= this.state.offMin)
       let newerResult = newResult.filter((data) => data.otl <= this.state.offMax)
+
 
       this.setState({
         data: newerResult

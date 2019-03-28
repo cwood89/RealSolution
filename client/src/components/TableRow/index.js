@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from "react-router-dom";
-import CompResults from "../../pages/CompResults";
+import { Link } from "react-router-dom";
 import atlantaMap from "./atlanta.png"
 import API from "../../utils/API";
 
