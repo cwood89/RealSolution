@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(logger("dev"));
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -28,12 +28,6 @@ require("./routes/authRoutes")(app);
 require("./routes/otlSetup")(app);
 require("./routes/subject-summary-api-routes")(app);
 require("./routes/compApi")(app);
-require("./routes/newListingTable-api-routes")(app);
-require("./routes/subjectWithComps-api-routes")(app);
-require("./routes/rentalCompsTable-api-routes")(app);
-require("./routes/saleCompsTable-api-routes")(app);
-require("./routes/rentEstTable-api-routes")(app);
-require("./routes/saleEstTable-api-routes")(app);
 require("./routes/customerOutputs-api-routes")(app);
 
 var syncOptions = { force: false };

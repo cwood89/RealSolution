@@ -8,9 +8,9 @@ const otlDrop = (req, res, next) => {
 }
 
 //make subject_otl as an middleware, create a offer to list table of the subjects 
-const otlTable = (req, res, next) => {
+const otlTable = async (req, res, next) => {
 
-  db.subject_finds.findAll({}).then(function (data) {
+ await db.subject_finds.findAll({}).then(function (data) {
     //1.Using a loop to apply the otl function and get offer2list value;
     //2 put the new entry to the table subject_otlist
     for (i = 0; i < data.length; i++) {
@@ -40,7 +40,6 @@ const otlTable = (req, res, next) => {
       })
     }
   });
-
   next();
 };
 
