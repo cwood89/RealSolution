@@ -9,7 +9,7 @@ function Nav() {
       <nav className="navbar is-dark" role="navigation" aria-label="main navigation" >
         <div className="navbar-brand">
           <a className="navbar-item">
-            <div className="mainBrand"><a href="/">Real Solution</a></div>
+            <div className="mainBrand"><a href="/" className="mainBrand">Real Solution</a></div>
           </a>
         </div>
 
@@ -31,10 +31,10 @@ function Nav() {
             ) : (
               <ul>
                 <li>
-                  <a className="navbar-item" ><Link to="/login">Log In</Link></a>
+                  <a className="navbar-item" ><Link className="landingButton" to="/login">Log In</Link></a>
                 </li>
                 <li>
-                  <a className="navbar-item" ><Link to="/signup">Sign Up</Link></a>
+                  <a className="navbar-item" ><Link className="landingButton" to="/signup">Sign Up</Link></a>
                 </li>
               </ul>
 

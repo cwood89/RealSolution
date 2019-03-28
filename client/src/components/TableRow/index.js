@@ -47,7 +47,7 @@ function Row(props) {
           <div className="dropdown-menu ddButtons" id="dropdown-menu4" role="menu">
             <div className="dropdown-content" style={ddStyle}>
               <div className="dropdown-item">
-                <button className="button is-primary" style={buttonStyle}><a><Link to={compsLink}>Comps</Link></a></button>
+                <button className="button is-primary" style={buttonStyle}><a><Link style={{color: 'white'}} to={compsLink}>Comps</Link></a></button>
               </div>
               <div className="dropdown-item">
                 <button className="button is-info" onClick={() => {

@@ -90,7 +90,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mainBackground">
         <Header />
         <div className="tabs is-fullwidth">
           <ul>

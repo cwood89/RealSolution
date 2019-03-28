@@ -8,7 +8,6 @@ $Tertiary: #FFB856;
 $MainFont: 'Suranna', serif;
 $AltFont: 'Raleway', sans-serif;
 
-
 body {
   margin: 0;
   padding: 0;
@@ -190,4 +189,15 @@ p {
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+
+
+.landingButton {
+  text-decoration: none;
+  color: $Secondary;
+}
+
+.mainBackground {
+    background-image: url(../src/assets/checkered_pattern_@2X.png);
+    padding-bottom: 100%;
 }

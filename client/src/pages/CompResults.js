@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Nav from "../components/nav"
+import Header from '../components/header'
 import CompTable from "../components/ResultTable/compTable";
 import CompRow from "../components/TableRow/compRow";
 import API from "../utils/API"
@@ -34,8 +34,8 @@ class CompResults extends Component {
 
   render() {
     return (
-      <div>
-        <Nav />
+      <div className="mainBackground">
+        <Header />
         <section className="hero">
           <div className="hero-body">
             <div className="container">

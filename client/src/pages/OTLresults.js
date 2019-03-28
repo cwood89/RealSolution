@@ -198,7 +198,7 @@ class OTLresults extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mainBackground">
         <Header />
         <PropertyHero />
         <div className="searchAndContent">

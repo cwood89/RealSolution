@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/nav/newNav"
+import Background from "../assets/checkered_pattern_@2X.png"
 function Landing() {
   return (
-    <div>
+    <div className="mainBackground">
       <Nav />
       <section className="landingTextWriteup">
         <div className="container is-half landing0">
@@ -12,8 +13,8 @@ function Landing() {
         </div>
         {/* {() => {setTimeout(document.getElementById('buttonPlace').style.display = {display: 'block'}, 2000)}} */}
         <div className="container is-half" id="buttonPlace">
-          <button className="button is-primary animated fadeInLeft"><a className="" ><Link to="/login">Log In</Link></a></button>
-          <button className="button is-primary animated fadeInLeft"><a className="" ><Link to="/signup">Sign Up</Link></a></button>
+          <button className="button is-dark animated fadeInLeft"><a className="" ><Link className="landingButton" to="/login">Log In</Link></a></button>
+          <button className="button is-dark animated fadeInLeft"><a className="" ><Link className="landingButton" to="/signup">Sign Up</Link></a></button>
         </div>
       </section>
     </div >
