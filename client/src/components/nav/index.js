@@ -34,12 +34,15 @@ function Nav() {
               Settings
         {/* When this button is clicked, it should go to the Profile page and the settings pane should open automatically */}
             </a>
+            <a href="https://docs.google.com/spreadsheets/d/1viRr2fACZjM15TgyWl7brzmh-4rCh8Csvc6NdkaOAIs/edit#gid=0" className="dropdown-item is-active animated zoomInRight">
+              Input from Googlesheet
+      </a>
             <a className="dropdown-item is-active animated zoomInRight" onClick={() => {
               API.logOut(() => {
                 history.push("/")
               })
             }}>Log Out
-            </a>
+      </a>
           </span>
         </div>
 
