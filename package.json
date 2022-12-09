@@ -24,7 +24,7 @@
     "connect-session-sequelize": "^6.0.0",
     "cookie-parser": "^1.4.4",
     "dotenv": "^6.0.0",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-handlebars": "^3.0.2",
     "express-session": "^1.15.6",
     "firebase-admin": "^7.1.1",
